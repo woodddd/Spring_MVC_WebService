@@ -1,0 +1,418 @@
+@charset "UTF-8";
+
+
+#wrap {
+	background-color: rgb(42 171 42 / 5%);
+}
+
+#searchBoardWrap{
+	width: 1024px;
+}
+
+.search_catagoryDiv{
+	padding-top: 30px;
+}
+
+.bestCatagoryDiv {
+	background: rgb(255, 255, 255);
+    padding: 20px;	
+    margin-bottom: 1px;
+    box-shadow: rgb(173 212 173 / 50%) 0px 1px 2px 0px;
+/*     display: flex;
+    align-items: center; */
+}
+
+.beforeCtg {
+    background: rgb(255, 255, 255);
+    font-weight: 500;
+    margin-bottom: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.beforeA {
+	display: flex;
+    align-items: center;
+}
+
+.beforeA img {
+	margin-right: 10px;
+}
+
+
+.resetA{
+	display: flex;
+    font-size: 13px;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-left: 40px;
+    position: relative;
+}
+
+.resetA::after {
+	content: "";
+    width: 1px;
+    height: 11px;
+    position: absolute;
+    top: 1px;
+    left: -20px;
+    border-left: 1px solid rgb(229, 229, 229);
+}
+
+.resetA img {
+	margin-right: 7px;
+}
+
+#ca{
+    font-weight: 500;
+    margin-bottom: 14px;	
+}
+
+#bestCategory {
+	display: flex;
+    height: 34px;
+}
+
+#bestA {
+	display: flex;
+    border-radius: 15px;
+    border: 2px solid rgb(238, 238, 238);
+    height: 34px;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 13px;
+    font-size: 12px;
+    margin-right: 13px;
+}
+
+.bestctg1 {
+	display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.bestctg2 {
+	display: none;
+}
+
+.bestctg1 img {
+	margin: 0px 10px;
+}
+
+.bestCount {
+	margin-left: 3px;
+    color: rgb(204, 204, 204);	
+}
+
+.categoryList {
+	/* height: 195px; */
+    transition: height 0.3s ease-in-out 0s;
+    overflow: hidden;
+}
+
+.searchCtgListDiv {
+	width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+#clickCategoryList {
+	width: 204px;
+    height: 48px;
+    margin-bottom: 1px;
+}
+
+#clickCtg1A, #clickCtg2A, #clickCtg3A {
+	width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    font-size: 12px;
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    padding: 0px 20px;
+    box-shadow: rgb(173 212 173 / 50%) 0px 1px 2px 0px;
+}
+
+.clickCtg1, .clickCtg2, .clickCtg3 {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.clickCtgCount {
+	color: rgb(204, 204, 204);
+    margin-left: 5px;
+    flex-shrink: 0;
+}
+
+#emptyDiv {
+	background: rgb(255, 255, 255);
+    width: 204px;
+    box-shadow: rgb(173 212 173 / 50%) 0px 1px 2px 0px;
+    margin-bottom: 1px;
+}
+
+
+
+/* 하이님의 검색결과, 정확도순~고가순 */
+#searchResult{
+	 margin: 50px 0px 24px;
+}
+
+#searchResultDiv{
+	display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.searchResultText{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 16px;	
+}
+
+#searchKeyword{
+	color: green;
+}
+
+#searchKeywordCount{
+    color: rgb(136, 136, 136);
+    margin-left: 5px;	
+}
+
+.searchResultOrder {
+	font-size: 13px;
+    display: flex;
+}
+
+.searchResultOrder a {
+	margin-right: 20px;
+    position: relative;
+    display: block;
+    font-weight: 600;
+}
+
+.searchResultOrder a::after {
+	content: "";
+    position: absolute;
+    top: 1px;
+    right: -10px;
+    width: 1px;
+    height: 12px;
+    border-right: 1px solid rgb(204, 204, 204);
+}
+
+.orderChoice {
+	color : red;
+}
+
+
+
+
+/* 페이징 */
+#itemBoardPagingDiv {
+	display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+#itemBoardPagingDiv2 {
+	display: flex;
+}
+
+#paging{
+	width: 33px;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    border-radius: 2px;
+    color: rgb(155, 153, 169);
+    cursor: pointer;
+}
+
+#currentPaging{
+	width: 33px;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    border: 1px solid #246d24;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    background: #246d24;
+    cursor: pointer;
+}
+
+
+
+
+/* 게시물 */
+.searchItemList1{
+    position: relative;
+    overflow: hidden;
+}
+
+.searchItemList3{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.itemFrame:nth-child(5n) {
+    margin-right: 0px;
+}
+
+.itemFrame {
+    width: 196px;
+    margin-right: 11px;
+    margin-bottom: 11px;
+    background: rgb(255, 255, 255);
+}
+
+.itemLink {
+    border: 1px solid rgb(238 238 238);
+    background: rgb(255, 255, 255);
+    display: block;
+    color: rgb(33, 33, 33);
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.itemImageArea {
+    position: relative;
+    width: 100%;
+    height: 194px;
+}
+
+
+.itemImageArea>img {
+   vertical-align: bottom;
+   border-style: none;
+}
+
+.imageAreaDiv {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.itemContent {
+    padding: 15px 10px;
+    height: 80px;
+}
+
+.itemName {
+    position: relative;
+    font-size: 14px;
+    padding-bottom: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.itemPriceAndTime {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 20px;
+}
+
+.itemPrice {
+    font-size: 16px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.itemPrice::after {
+    content: "원";
+    font-size: 13px;
+    margin-left: 3px;
+
+}
+.itemTime {
+    font-size: 12px;
+    color: rgb(136, 136, 136);
+    text-align: right;
+}
+
+
+#item_seqSpan{
+	display:none;
+}
+
+.itemLocation {
+	height: 40px;
+    border-top: 1px solid rgb(238, 238, 238);
+    font-size: 12px;
+    display: block;
+    padding: 14px 10px 14px 35px;
+    color: rgb(102, 102, 102);
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+}
+
+.itemLocation img {
+	position: absolute;
+    left: 10px;
+    top: calc(50% - 8px);
+
+}
+
+#itemSelectSpan {
+	color : green;
+}
+
+.zeroSearch {
+	width: 100%;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 4rem 0px 8rem;
+}
+
+.zeroDiv {
+	 width: 500px;
+    font-weight: 600;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-bottom: 35px;
+}
+
+.zeroKeyword {
+	font-size: 24px;
+    color: #246d24;
+    margin-bottom: 20px;
+}
+
+.confirmDiv {
+	text-align: center;
+    padding-top: 40px;
+    line-height: 1.9;
+}
+

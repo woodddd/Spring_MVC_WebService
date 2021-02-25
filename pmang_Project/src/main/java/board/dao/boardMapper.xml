@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardSQL">
+	
+	<select id="getItem" resultType="item">
+		select * from item where item_seq=#{item_seq}
+	</select>
+	
+	<select id="getCommentList" resultType="comment">
+		select * from itemComment where item_seq=#{item_seq} order by logtime desc
+	</select>
+	
+
+	<insert id="itemComment" parameterType="java.util.Map">
+		insert into itemComment values(comment_seq.nextval,
+										#{item_seq},
+										#{userId},<!-- 유저아이디, 세션에서 받아 넣을 것 --> <!-- 확인 -->
+										#{item_comment},
+										sysdate,
+										#{pf_photo} <!-- 유저아이디로 조인 걸어서 받아올 것 -->
+										)
+	</insert>
+	
+	<delete id="commentDelete">
+		delete itemComment where comment_seq=#{comment_seq}
+	</delete>
+	
+	<select id="getAComment" resultType="comment">
+		select * from itemComment where comment_seq=#{comment_seq}
+	</select>
+	
+	
+
+	
+	
+	
+	
+	
+	<!-- ItemBoard -->
+	<select id="getItemBoardList" parameterType="java.util.Map" resultType="item">
+	select * from (select rownum rn, tt.* from (select item_seq, img1, item_subject, category1, category2, category3, item_location, item_price, hashtag1, hashtag2, hashtag3, hit, logtime from item where item_state = 'sell' and category1 = #{category1}	
+		<if test="category2 != null">
+			and category2 = #{category2}
+		</if>
+		<if test="category3 != null">
+			and category3 = #{category3}
+		</if>
+		<if test="location != null">
+			and replace(item_location, ' ','') like replace('%' || #{location} || '%', ' ', '')
+		</if>
+		<if test="order.equals('최신순')">
+			order by logtime desc
+		</if>
+		<if test="order.equals('인기순')">
+			order by hit desc
+		</if>
+		<if test="order.equals('저가순')">
+			order by item_price 
+		</if>
+		<if test="order.equals('고가순')">
+			order by item_price desc
+		</if>
+		 )tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+	
+	</select>
+	
+
+	<select id="getItemBoardCount1" parameterType="java.util.Map" resultType="java.util.Map">
+		select category1, category2, count(category2) as cnt2 from item where item_state = 'sell'
+		
+		<if test="location != null">
+			and replace(item_location, ' ','') like replace('%' || #{location} || '%', ' ', '')
+		</if>
+		
+		 group by category1, category2 having category1 = #{category1} and category2 is not null
+	</select>
+	
+
+
+	<select id="getItemBoardCount2" parameterType="java.util.Map" resultType="java.util.Map">
+	 	select category2, category3, count(category3) as cnt3 from item where item_state = 'sell'
+	 	
+	 	<if test="location != null">
+			and replace(item_location, ' ','') like replace('%' || #{location} || '%', ' ', '')
+		</if>
+	 	
+	 	group by category2, category3 having category2 = #{category2} and category3 is not null
+	</select>
+	
+	<select id="getEntireItemNum" parameterType="java.util.Map" resultType="int">
+	 	<if test="category2 == null and category3 == null">
+	 		select count(category1) from item where category1 = #{category1}
+	 	</if>
+	 	<if test="category2 != null and category3 == null">
+	 		select count(category2) from item where category1 = #{category1} and category2 = #{category2}
+	 	</if>
+	 	<if test="category3 != null">
+	 		select count(category3) from item where category1 = #{category1} and category2 = #{category2} and category3 = #{category3}
+	 	</if>
+	 	
+	 	 and item_state = 'sell'
+	 	 
+	 	 <if test="location != null">
+	 	 and replace(item_location, ' ','') like replace('%' || #{location} || '%', ' ', '')
+	 	 </if>
+	</select>
+	
+	
+	
+	
+	
+	<!-- <select id="getOrderbyItem" parameterType="java.util.Map" resultType="item">
+		select * from (select rownum rn, tt.* from (select item_seq, img1, item_subject, category1, category2, category3, item_location, item_price, hashtag1, hashtag2, hashtag3, hit, logtime from item where item_state = 'sell' and category1 = #{category1}
+		<if test="category2 != null">
+			and category2 = #{category2}
+		</if>
+		<if test="category3 != null">
+			and category3 = #{category3}
+		</if>
+		
+		<if test="order.equals('최신순')">
+			order by logtime desc
+		</if>
+		<if test="order.equals('인기순')">
+
+			order by hit desc
+
+		</if>
+		<if test="order.equals('저가순')">
+			order by item_price 
+		</if>
+		<if test="order.equals('고가순')">
+			order by item_price desc
+		</if>
+			)tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+		
+	</select> -->
+	
+	
+	<update id="itemHitUpdate" parameterType="int">
+		update item set hit=hit+1 where item_seq=#{item_seq}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	<select id="getWishlist" resultType="wishlist">
+	 	select * from wishlist where item_seq=#{item_seq}
+	</select>
+	
+	<insert id="pushLike" parameterType="java.util.Map">
+		insert into wishlist values(wishlist_seq.nextval,
+									#{userId},										
+									#{item_seq}
+									)
+	</insert>
+	
+	<delete id="cancelLike" parameterType="java.util.Map">
+		delete wishlist where item_seq=#{item_seq} and userId=#{userId}
+	</delete>
+	
+	<select id="getUserId" parameterType="java.util.Map" resultType="java.lang.String">
+		select userId from 
+			<if test='targetType=="item"'> item where item_seq=#{target_seq}</if>
+			<if test='targetType=="mystore"'> mystore where mystore_seq=#{target_seq}</if>
+			<if test='targetType=="comment"'> itemcomment where comment_seq=#{target_seq}</if>
+	</select>
+	
+	<insert id="reportUser" parameterType="java.util.Map">
+		insert into pm_report values(report_seq.nextval,
+									#{userId},
+									#{targetType},
+									#{reportContent},
+									#{target_seq},
+									sysdate
+									)
+	</insert>
+	
+	<insert id="countReport">
+		insert into countReport values(count_seq.nextVal,
+								#{userId}
+								)
+	</insert>
+
+	<select id="indexSearchBoardList" parameterType="String" resultType="java.util.Map">
+		select category1, category2, category3, cnt2, cnt3 from (select rownum rn, tt.* from (select category1, category2, category3, count(category2) as cnt2, count(category3) as cnt3  from item where item_state = 'sell' and (item_subject like '%' || #{searchKeyword} || '%' or item_location like '%' || #{searchKeyword} || '%') group by category1, category2, category3 order by cnt3 desc)tt) where rn <![CDATA[ <= ]]> 4
+	</select>
+	
+	<select id="getCategory1List" parameterType="String" resultType="java.util.Map">
+		select category1, count(category1) as cnt1 from item where item_state = 'sell' and (item_subject like '%' || #{searchKeyword} || '%' or item_location like '%' || #{searchKeyword} || '%')  group by category1 order by cnt1 desc
+	</select>
+	
+	<select id="getTotalSearchItem" parameterType="String" resultType="int">
+		select count(*) from item where item_state = 'sell' and (item_subject like '%' || #{searchKeyword} || '%' or item_location like '%' || #{searchKeyword} || '%')
+	</select>
+	
+	<select id="getSearchItemList" parameterType="java.util.Map" resultType="item">
+		select * from (select rownum rn, tt.* from (select item_seq, img1, item_subject, category1, category2, category3, item_location, item_price, hashtag1, hashtag2, hashtag3, hit, logtime from item where item_state = 'sell' and (item_subject like '%' || #{searchKeyword} || '%' or item_location like '%' || #{searchKeyword} || '%')
+		
+		<if test="order.equals('최신순')">
+			order by logtime desc
+		</if>
+		<if test="order.equals('인기순')">
+			order by hit desc
+		</if>
+		<if test="order.equals('저가순')">
+			order by item_price 
+		</if>
+		<if test="order.equals('고가순')">
+			order by item_price desc
+		</if>
+			
+			)tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+	</select>
+	
+	<select id="getCategory2List" parameterType="java.util.Map" resultType="java.util.Map">
+		select category2, count(category2) as cnt2  from item where item_state = 'sell' and (item_subject like '%' || #{searchKeyword} || '%' or item_location like '%' || #{searchKeyword} || '%') and category1 = #{category1} group by category2 order by cnt2 desc
+	</select>
+	
+	<select id="getSearchItem1List" parameterType="java.util.Map" resultType="item">
+		select * from (select rownum rn, tt.* from (select item_seq, img1, item_subject, category1, category2, category3, item_location, item_price, hashtag1, hashtag2, hashtag3, hit, logtime from item where item_state = 'sell' and (item_subject like '%' || #{searchKeyword} || '%' or item_location like '%' || #{searchKeyword} || '%') and category1 = #{category1} 
+		<if test="order.equals('최신순')">
+			order by logtime desc
+		</if>
+		<if test="order.equals('인기순')">
+			order by hit desc
+		</if>
+		<if test="order.equals('저가순')">
+			order by item_price 
+		</if>
+		<if test="order.equals('고가순')">
+			order by item_price desc
+		</if>
+			)tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+	</select>
+	
+	<select id="getCategory3List" parameterType="java.util.Map" resultType="java.util.Map">
+		select category3, count(category3) as cnt3  from item where item_state = 'sell' and (item_subject like '%' || #{searchKeyword} || '%' or item_location like '%' || #{searchKeyword} || '%') and category2 = #{category2} group by category3 order by cnt3 desc
+	</select>
+	
+	<select id="getSearchItem2List" parameterType="java.util.Map" resultType="item">
+		select * from (select rownum rn, tt.* from (select item_seq, img1, item_subject, category1, category2, category3, item_location, item_price, hashtag1, hashtag2, hashtag3, hit, logtime from item where item_state = 'sell' and (item_subject like '%' || #{searchKeyword} || '%' or item_location like '%' || #{searchKeyword} || '%') and category2 = #{category2} 
+		<if test="order.equals('최신순')">
+			order by logtime desc
+		</if>
+		<if test="order.equals('인기순')">
+			order by hit desc
+		</if>
+		<if test="order.equals('저가순')">
+			order by item_price 
+		</if>
+		<if test="order.equals('고가순')">
+			order by item_price desc
+		</if>
+			)tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+		
+	</select>
+	
+	<select id="getSearchItem3List" parameterType="java.util.Map" resultType="item">
+		select * from (select rownum rn, tt.* from (select item_seq, img1, item_subject, category1, category2, category3, item_location, item_price, hashtag1, hashtag2, hashtag3, hit, logtime from item where item_state = 'sell' and (item_subject like '%' || #{searchKeyword} || '%' or item_location like '%' || #{searchKeyword} || '%') and category2 = #{category2} and category3 = #{category3} 
+		<if test="order.equals('최신순')">
+			order by logtime desc
+		</if>
+		<if test="order.equals('인기순')">
+			order by hit desc
+		</if>
+		<if test="order.equals('저가순')">
+			order by item_price 
+		</if>
+		<if test="order.equals('고가순')">
+			order by item_price desc
+		</if>
+			)tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+	</select>
+	
+	
+	<select id="getIndexBoardList" parameterType="java.util.Map" resultType="item">
+		select * from (select rownum rn, tt.* from (select * from item where item_state = 'sell' order by logtime desc)tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+	</select>
+	
+	<select id="getTotalItem" resultType="String">
+		select count(*) from item where item_state = 'sell' order by logtime desc
+	</select>
+	
+	
+	
+	<select id="hashtagBoardList" parameterType="String" resultType="java.util.Map">
+		select category1, category2, category3, cnt2, cnt3 from (select rownum rn, tt.* from (select category1, category2, category3, count(category2) as cnt2, count(category3) as cnt3 from item where item_state = 'sell' and (hashtag1 like '%' || #{hashtag} || '%' or hashtag2 like '%' || #{hashtag} || '%' or hashtag3 like '%' || #{hashtag} || '%') group by category1, category2, category3 order by cnt3 desc)tt) where rn <![CDATA[ <= ]]> 4
+	</select>
+	
+	<select id="getHashtagCategory1List" parameterType="String" resultType="java.util.Map">
+		select category1, count(category1) as cnt1 from item where item_state = 'sell' and (hashtag1 like '%' || #{hashtag} || '%' or hashtag2 like '%' || #{hashtag} || '%' or hashtag3 like '%' || #{hashtag} || '%')  group by category1 order by cnt1 desc
+	</select>
+	
+	<select id="getHashtagTotalSearchItem" parameterType="String" resultType="int">
+		select count(*) from item where hashtag1 like '%' || #{hashtag} || '%' or hashtag2 like '%' || #{hashtag} || '%' or hashtag3 like '%' || #{hashtag} || '%'
+	</select>
+	
+	<select id="getHashtagItemList" parameterType="java.util.Map" resultType="item">
+		select * from (select rownum rn, tt.* from (select item_seq, img1, item_subject, category1, category2, category3, item_location, item_price, hashtag1, hashtag2, hashtag3, hit, logtime from item where item_state = 'sell' and (hashtag1 like '%' || #{hashtag} || '%' or hashtag2 like '%' || #{hashtag} || '%' or hashtag3 like '%' || #{hashtag} || '%')
+		
+		<if test="order.equals('최신순')">
+			order by logtime desc
+		</if>
+		<if test="order.equals('인기순')">
+			order by hit desc
+		</if>
+		<if test="order.equals('저가순')">
+			order by item_price 
+		</if>
+		<if test="order.equals('고가순')">
+			order by item_price desc
+		</if>
+			
+		)tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+	</select>
+	
+	
+	
+	<select id="getHashtagCategory2List" parameterType="java.util.Map" resultType="java.util.Map">
+		select category2, count(category2) as cnt2  from item where item_state = 'sell' and (hashtag1 like '%' || #{hashtag} || '%' or hashtag2 like '%' || #{hashtag} || '%' or hashtag3 like '%' || #{hashtag} || '%') and category1 = #{category1} group by category2 order by cnt2 desc
+	</select>
+	
+	<select id="getHashtagItem1List" parameterType="java.util.Map" resultType="item">
+		select * from (select rownum rn, tt.* from (select item_seq, img1, item_subject, category1, category2, category3, item_location, item_price, hashtag1, hashtag2, hashtag3, hit, logtime from item where (hashtag1 like '%' || #{hashtag} || '%' or hashtag2 like '%' || #{hashtag} || '%' or hashtag3 like '%' || #{hashtag} || '%') and category1 = #{category1} and item_state = 'sell'  
+		<if test="order.equals('최신순')">
+			order by logtime desc
+		</if>
+		<if test="order.equals('인기순')">
+			order by hit desc
+		</if>
+		<if test="order.equals('저가순')">
+			order by item_price 
+		</if>
+		<if test="order.equals('고가순')">
+			order by item_price desc
+		</if>
+			)tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+	</select>
+	
+	<select id="getHashtagCategory3List" parameterType="java.util.Map" resultType="java.util.Map">
+		select category3, count(category3) as cnt3  from item where (hashtag1 like '%' || #{hashtag} || '%' or hashtag2 like '%' || #{hashtag} || '%' or hashtag3 like '%' || #{hashtag} || '%') and category2 = #{category2} and item_state = 'sell' group by category3 order by cnt3 desc
+	</select>
+	
+	<select id="getHashtagItem2List" parameterType="java.util.Map" resultType="item">
+		select * from (select rownum rn, tt.* from (select item_seq, img1, item_subject, category1, category2, category3, item_location, item_price, hashtag1, hashtag2, hashtag3, hit, logtime from item where (hashtag1 like '%' || #{hashtag} || '%' or hashtag2 like '%' || #{hashtag} || '%' or hashtag3 like '%' || #{hashtag} || '%') and category2 = #{category2} and item_state = 'sell'
+		<if test="order.equals('최신순')">
+			order by logtime desc
+		</if>
+		<if test="order.equals('인기순')">
+			order by hit desc
+		</if>
+		<if test="order.equals('저가순')">
+			order by item_price 
+		</if>
+		<if test="order.equals('고가순')">
+			order by item_price desc
+		</if>
+			)tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+		
+	</select>
+	
+	<select id="getHashtagItem3List" parameterType="java.util.Map" resultType="item">
+		select * from (select rownum rn, tt.* from (select item_seq, img1, item_subject, category1, category2, category3, item_location, item_price, hashtag1, hashtag2, hashtag3, hit, logtime from item where (hashtag1 like '%' || #{hashtag} || '%' or hashtag2 like '%' || #{hashtag} || '%' or hashtag3 like '%' || #{hashtag} || '%') and category2 = #{category2} and category3 = #{category3} and item_state = 'sell' 
+		<if test="order.equals('최신순')">
+			order by logtime desc
+		</if>
+		<if test="order.equals('인기순')">
+			order by hit desc
+		</if>
+		<if test="order.equals('저가순')">
+			order by item_price 
+		</if>
+		<if test="order.equals('고가순')">
+			order by item_price desc
+		</if>
+			)tt)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+	</select>
+	
+	
+	<!-- 검색 -->
+	<insert id="setSearchKeyword" parameterType="java.util.Map">
+		insert into searchkeyword values(#{userid}, #{keyword}, sysdate)
+	</insert>
+	
+	<select id="getSearchKeyword" parameterType="String" resultType="search">
+		select * from searchkeyword where userid = #{userid} order by logtime desc
+	</select>
+	
+	<delete id="removeSearch" parameterType="java.util.Map">
+		delete searchkeyword where userid=#{userid} and keyword=#{keyword}
+	</delete>
+	
+	<delete id="searchAllDelete" parameterType="String">
+		delete searchkeyword where userid=#{userid}
+	</delete>
+	
+	
+	<!-- 리뷰(후기) -->
+	<insert id="reviewWrite" parameterType="review">
+ 		insert into review values(review_seq.nextval,
+							 		#{sellerid},
+							 		#{item_seq},
+							 		#{reviewWriter},
+							 		#{reviewSubject},
+							 		#{reviewContent},
+							 		#{img1},
+							 		#{img2},
+							 		#{img3},
+							 		sysdate,
+							 		#{reviewStamp})
+							 		
+ 	</insert>
+ 	
+ 	
+ 	<!-- 주요거래설정 -->
+ 	<select id="getMainLoc" parameterType="String" resultType="java.util.Map">
+ 		select addr from mainLoc where userId = #{userId}
+ 	</select>
+ 	
+ 	<insert id="setMainLoc" parameterType="java.util.Map">
+ 		insert into mainLoc values(#{userId}, #{addr})
+ 	</insert>
+ 	
+ 	<delete id="deleteMainLoc" parameterType="java.util.Map">
+ 		delete mainLoc where userId = #{userId} and addr = #{addr}
+ 	</delete>
+ 	
+
+ 	
+ 	<select id="getNoticeList" resultType="notice">
+ 		select * from notice
+ 	</select>
+	
+	<select id="getMyZzim" resultType="wishlist">
+		select * from wishlist where userId=#{userId}
+	</select>
+
+	<insert id="qnaWrite" parameterType="qna">
+		insert into qna(qna_seq,userid,select1,select2,qnaContent,img1,img2,img3) values(
+					qna_seq.nextval
+					,#{userid}
+					,#{select1}
+					,#{select2}
+					,#{qnaContent}
+					,#{img1}
+					,#{img2}
+					,#{img3})
+	</insert>
+	
+	<select id="getQnaList" parameterType="String" resultType="qna">
+		select * from qna where userid=#{userid}
+	</select>
+	
+	<select id="getQna" resultType="qna">
+		select * from qna where qnareply is null order by qna_seq
+	</select>
+	
+	<update id="qnaReplyWrite" parameterType="java.util.Map">
+		update qna set qnareply=#{qnaContent}, logtime=sysdate where qna_seq=#{qna_seq} 
+	</update>
+
+
+	<select id="getItemInfo" resultType="item">
+		select * from item where item_seq=#{item_seq}
+	</select>
+	
+	<select id="getSellerInfo" resultType="seller">
+		select * from seller where userId = #{userId}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

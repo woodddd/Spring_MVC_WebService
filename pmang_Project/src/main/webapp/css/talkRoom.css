@@ -1,0 +1,825 @@
+@charset "UTF-8";
+
+/* 공통속성 */
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+html {
+    line-height: 1.15;
+    text-size-adjust: 100%;
+}
+
+body {
+    line-height: 1;
+    background-color: rgb(249, 249, 249);
+    font-size: 14px;
+}
+
+html, body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    color: rgb(33, 33, 33);
+}
+
+
+body, #root {
+    max-width: 375px;
+    height: 667px;
+    overflow: hidden;
+    position: relative;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, main, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body, input, textarea, select, button {
+    direction: ltr;
+    text-align: left;
+    color: rgb(33, 33, 33);
+    letter-spacing: -0.5px;
+    outline: 0px;
+    border: 0px;
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+    appearance: button;
+}
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+}
+
+button, input[type="text"], input[type="tel"], input[type="number"] {
+    appearance: none;
+}
+
+button, input {
+    padding: 0px;
+    border: 0px;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input {
+    overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0px;
+}
+
+a {
+    color: rgb(33, 33, 33);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a {
+    background-color: transparent;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+img {
+    border-style: none;
+}
+
+/* 개별 속성 */
+.talk_Area {
+   min-width: 1236px;
+}
+
+.talk_area_div {
+   display: flex;
+    flex-direction: column;
+    width: 375px;
+    height: 667px;
+    background: rgb(244, 244, 250);
+    position: relative;
+}
+
+.talk_header {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    background: rgb(255, 255, 255);
+    z-index: 10;
+    padding: 0px 1rem;
+    justify-content: center;
+}
+
+.talk_itemName_button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.itemName {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-width: 4.5rem;
+    min-height: 1rem;
+}
+
+.itemName_arrow {
+    content: "";
+    background-image: url(/pmang/image/open.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 12px;
+    height: 12px;
+    margin-left: 4px;
+    transform: rotate(180deg);
+    will-change: transform;
+}
+
+.talk_item_detailDiv {
+    position: absolute;
+    display: flex;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.talk_item_detailBtn {
+    height: 2rem;
+    background-image: url(/pmang/image/controll.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 2rem;
+    margin-right: 10px;
+}
+
+.talk_itemInfo {
+    display: flex;
+    width: 100%;
+    height: 3.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 2px solid green;
+    padding: 0.5rem; /* 좌우 8 */
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+}
+
+.itemboard_move {
+    display: flex;
+    flex: 1 1 0%;
+    padding-right: 0.5rem;
+    overflow: hidden;
+}
+
+.itemboard_move > img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2px;
+    margin-right: 0.5rem;
+}
+
+.talk_itemList {
+   flex: 1 1 0%;
+    min-width: 0px;
+    line-height: 1.2;
+}
+
+.item_price_div {
+   display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.item_price_div > small {
+   font-size: 13px;
+    margin-left: 2px
+}
+
+.item_subject_div {
+    display: block;
+    font-size: 14px;
+    line-height: 1.5;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.price_change {
+   height: 2rem;
+    border-radius: 4px;
+    background: rgb(234, 233, 241);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    padding: 0px 12px;
+}
+
+.talk_footer {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    border-top: 2px solid green;/* rgb(238, 238, 238) */
+    padding-top: 8px;
+    padding-bottom: 8px;
+    position: relative;
+}
+
+.talk_send_Area {
+   width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.message_option_Area {
+   display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.message_option_Btn {
+   height: 2.5rem;
+    background-image: url(/pmang/image/open.png); /* 개인적으로 돋보기로 바꾸고싶다.. */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 26px 26px;
+    width: 46px;
+}
+
+.message_text_Area {
+    flex: 1 1 0%;
+    margin-right: 10px;
+}
+
+.message_text_form {
+   background: rgb(244, 244, 250);
+    border-radius: 20px;
+    position: relative;
+}
+
+.talk_message {
+   max-height: 63px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    height: 39px;
+    appearance: none;
+    background: transparent;
+    outline: none;
+    border: 0px;
+    border-radius: 2px 0px 0px 2px;
+    padding: 9.5px 2.5rem 9.5px 20px;
+    line-height: 1.4;
+    resize: none;
+    overflow: auto;
+    font-size: 15px;
+    width: 100%;
+}
+
+/* ----------------------------------------------------- */
+/* 채팅방 */
+/* 채팅방 */
+#talkContentDiv {
+   width: 100%;
+   height: 100%;
+   background: rgb(244, 244, 250);;
+   float: none;
+   overflow-y: auto;
+   overflow-x: hidden;
+}
+
+.talkDate {
+   color:#bcbcbc;
+   margin: 10px 0px;
+}
+.talkDate:before {
+   content: "";
+   border-bottom: 1px solid #bcbcbc;
+   width: 110px;
+   float: left;
+   display: inline-block;
+   margin-top: 10px; 
+}
+.talkDate:after {
+   content: "";
+   border-bottom: 1px solid #bcbcbc;
+   width: 110px;
+   float: right;
+   display: inline-block;
+   margin-top: 10px; 
+}
+/* 받은 메세지 */
+.talkRecieveDiv {
+    width: 100%;
+   display: flex;
+   overflow:hidden;
+   height:auto;
+   margin: 10px 0px;
+}
+.talkReciveDiv div{
+   float: left;
+   margin: 0px 5px;
+}
+.talkReciveProfile img{
+   border-radius:20px 20px 20px 20px;
+}
+.talkReciveTooltip {
+   background-color: #f0f0f5;
+   border-radius: 0px 20px 20px 20px ;
+   max-width: 55%;
+   font-size: 14px;
+   padding: 10px;
+}
+
+.talkReciveContent {
+   width: 100%;
+   font-size: 15px;
+   word-break:break-all;
+}
+.talkReciveTime {
+   font-size: 10px;
+   flex-direction: column;
+   align-self: flex-end;
+}
+/* 보내는 메세지 */
+.talkSendDiv {
+   width: 100%;
+   display: flex;
+   overflow:hidden;
+   height:auto;
+    word-break:break-all;
+   margin: 20px 0px;
+   justify-content: flex-end;
+}
+.talkSendDiv div {
+/*    margin: 0px 3px; */
+}
+
+.talkSendTime {
+	width:28.5px;
+	height:13px;
+}
+.talkSendTooltip {
+   background-color: green;
+   color: white;
+   font-size: 15px;
+   border-radius:20px 0px 20px 20px ;
+   padding: 10px;
+   max-width: 65%;
+   margin-right: 20px;
+}
+.talkSendContent {
+   width: 100%;
+   font-size: 15px;
+   word-break:break-all;
+}
+.talkTimeDiv {
+   font-size: 10px;
+     margin-left: 0.2px;
+   flex-direction: column;
+   align-self: flex-end;
+}
+
+#sendBtn {
+   position: absolute;
+   background: transparent;
+   color: green;
+    top: calc(50% - 1rem);
+    right: 4px;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    outline: none;
+    vertical-align: middle;
+}
+
+/* 채팅창끝--------------------- */
+/* 모달 */
+.modalDiv {
+	display: none;
+	position: fixed;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    width: 375px;
+    height: calc(100% - 50px);
+    z-index: 2;
+}
+
+.modal_area {
+	width: 375px;
+    height: calc(617px);
+    position: fixed;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal_marketInfo_div{
+	position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background: rgb(255, 255, 255);
+    display: block;
+}
+
+.modal_marketInfo_detail_div {
+	width: 100%;
+    display: block;
+    padding: 8px 0px;
+}
+
+.modal_marketReview {
+	width: 100%;
+    display: block;
+    padding: 8px 0px;
+}
+
+.market_info_div {
+	display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 2.5rem;
+    align-items: center;
+    padding: 0px 3rem 0px 1.5rem;
+}
+
+.market_info_textDiv {
+	margin: 0px 1rem 0px 0px;
+    color: rgb(114, 112, 127);
+    font-size: 15px;
+    flex-shrink: 0;
+    flex-direction: column;
+}
+
+.market_review_dataArea {
+	flex: 1 1 0%;
+    min-width: 0px;
+    font-size: 15px;
+}
+
+.market_review_data {
+	display: flex;
+    flex-direction: row;
+    height: 1rem;
+}
+
+.market_review_data img {
+	width: 15px;
+	height: 15px;
+}
+
+/* .market_info_a::after {
+    content: "";
+    position: absolute;
+    background-image: url(/pmang/image/open.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    transform: rotate(270deg);
+    width: 1rem;
+    height: 1rem;
+    right: 1rem;
+} */
+
+.market_review_dataArea b{
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	font-weight: bold;
+    font-size: 1rem;
+}
+
+
+
+.contact_time_div, .sales_details_div {
+	display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 2.5rem;
+    align-items: center;
+    padding: 0px 3rem 0px 1.5rem;
+}
+
+.market_info_Btns {
+	display: flex;
+	flex-direction: row;
+}
+
+.market_info_Btns > * {
+    flex: 1 1 0%;
+    height: 3.5rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.Fraud_report_Btn {
+    border-top: 1px solid rgb(244, 244, 250);
+    color: green;
+}
+
+.seller_market_a {
+	color: rgb(255, 255, 255);
+    background: green;
+}
+
+.room_setting_modal {
+	display: none;
+	position: fixed;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    width: 375px;
+    height: calc(617px);
+    z-index: 2;
+    visibility: visible;
+}
+
+.room_setting_modal_area {
+	width: 100%;
+    height: calc(617px);
+    background-color: rgba(0,0,0,0.5);
+}
+
+.room_setting_content {
+	position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background: rgb(255, 255, 255);
+    padding: 8px 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.room_setting_notification_Btn {
+	width: 4rem;
+    height: 4rem;
+    background-image: url(/pmang/image/notification_green.png);
+    background-position: center 9px;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    padding-top: 31px;
+    font-size: 13px;
+    text-align: center;
+    color: rgb(94, 92, 107);
+}
+
+.room_setting_report {
+	width: 4rem;
+    height: 4rem;
+    background-image: url(/pmang/image/report.jpg);
+    background-position: center 9px;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    padding-top: 31px;
+    font-size: 13px;
+    text-align: center;
+    color: rgb(94, 92, 107);
+}
+
+.room_setting_reportCheck {
+	width: 4rem;
+    height: 4rem;
+    background-image: url(/pmang/image/reportCheck.png);
+    background-position: center 9px;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    padding-top: 31px;
+    font-size: 13px;
+    text-align: center;
+    color: rgb(94, 92, 107);
+}
+
+.room_setting_cutOff {
+	width: 4rem;
+    height: 4rem;
+    background-image: url(/pmang/image/cutOff.png);
+    background-position: center 9px;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    padding-top: 31px;
+    font-size: 13px;
+    text-align: center;
+    color: rgb(94, 92, 107);
+}
+
+.room_setting_out {
+	width: 4rem;
+    height: 4rem;
+    background-image: url(/pmang/image/out.png);
+    background-position: center 9px;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    padding-top: 31px;
+    font-size: 13px;
+    text-align: center;
+    color: rgb(94, 92, 107);
+}
+
+.room_setting_notification_Btn > b {
+	font-weight: 600;
+}
+
+/* 메세지 옵션------------------ */
+.message_option_div {
+   padding: 20px;
+   display: none;
+}
+
+.sand_img_div {
+   padding-top:2px;
+   flex-direction: row;
+   cursor: pointer;
+   margin-left: 30px;
+   height: 70px;
+   text-align: center;
+   font-weight: bold;
+}
+.sand_img_div div{
+}
+.sand_img_div {
+   align-content: space-around;
+}
+
+.item_choice_div {
+   flex-direction: row;
+   cursor: pointer;
+   margin-left: 30px;
+   height: 70px;
+   text-align: center;
+}
+
+#files {
+   display: none;
+}
+
+/* 메세지 옵션끝------------------ */
+/* 모달 */
+.header_modal {
+   z-index: 1;
+}
+
+.on {
+   position: fixed;
+   opacity: 0.4;
+   background: black;
+   width: 375px;
+   height: 667px;
+}
+
+/* 하단모달 */
+.all_modal {
+   z-index: 11;
+   display: flex;
+}
+
+.item_choice_nav {
+   display: none;
+   position: absolute;
+   width: 100%;
+   bottom: 168px;
+   left: 0px;
+   background: white;
+   transform: translate3d(0px, 100%, 0px);
+   transition: transform 300ms ease-out 0s;
+   will-change: transform;
+   font-size: 15px;
+   border-top-left-radius: 1rem;
+   border-top-right-radius: 1rem;
+   z-index: 12;
+   opacity: 1;
+}
+
+.item_choice_div {
+   text-align: center;
+   font-size: 18px;
+   font-weight: bold;
+   height: 3.5rem;
+   display: flex;
+   -webkit-box-pack: center;
+   justify-content: center;
+   -webkit-box-align: center;
+   align-items: center;
+}
+
+.item_choice_closeBtn {
+   padding: 15px;
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: 1rem 1rem;
+   width: 2.5rem;
+   height: 2.5rem;
+   position: absolute;
+   top: 0.5rem;
+   right: 0.5rem;
+}
+
+.opponent_item_choice {
+   text-align: center;
+   width: 100%;
+   height: 3rem;
+   display: flex;
+   -webkit-box-align: center;
+   align-items: center;
+   -webkit-box-pack: center;
+   justify-content: center;
+   margin-top: 0.5rem;
+}
+
+.my_item_choice {
+   text-align: center;
+   width: 100%;
+   height: 3rem;
+   display: flex;
+   -webkit-box-align: center;
+   align-items: center;
+   -webkit-box-pack: center;
+   justify-content: center;
+   margin-top: 0.5rem;
+}
+
+/* 추가 */
+.on {
+   position: fixed;
+   opacity: 0.4;
+   background: black;
+   width: 375px;
+   height: 667px;
+   top: 0px;
+}
+.all_modal {
+   z-index: 30;
+   display: flex;
+}
+.modal_div {
+    display: flex;
+    flex-direction: column;
+    width: 296px;
+    background: rgb(255, 255, 255);
+    z-index: 1102;
+    padding: 1.5rem 0px;
+    border-radius: 2px;
+    text-align: center;
+}
+.userName_modal {
+   padding-bottom: 20px;
+   font-weight: bold;
+   color: black;
+}
+
+.on2 {
+   position: fixed;
+   opacity: 0.4;
+   background: black;
+   width: 375px;
+   height: 667px;
+   top: 0px;
+}
+.all_modal2 {
+   z-index: 30;
+   display: flex;
+}
+.modal_div2 {
+    display: flex;
+    flex-direction: column;
+    width: 296px;
+    background: rgb(255, 255, 255);
+    z-index: 1102;
+    padding: 1.5rem 0px;
+    border-radius: 2px;
+    text-align: center;
+}
+.userName_modal2 {
+   padding-bottom: 20px;
+   font-weight: bold;
+   color: black;
+}
+
+
+

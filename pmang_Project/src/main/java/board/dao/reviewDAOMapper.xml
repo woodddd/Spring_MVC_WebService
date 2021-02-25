@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="reviewSQL">
+ 	<insert id="reviewWrite" parameterType="review">
+ 		insert into review values(review_seq.nextval,#{buyerNum},#{item_seq},#{reviewWriter},#{reviewSubject},#{reviewContent},#{reviewImg1},#{reviewImg2},#{reviewImg3},to_char(systimestamp,'YYYY-MM-DD HH24:MI:SS:FF'),#{reviesStamp})
+ 		
+ 	</insert>
+ </mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="sellerManagementSQL">
+ 	<!-- 페이징 처리가 된 리스트 가져오기 -->
+ 	<select id="getSellerManagementList" parameterType="java.util.Map" resultType="sellerManagement">
+ 		select item_seq, img1, item_subject, item_state, item_price, 
+ 				wish_count, comment_count, logtime from
+ 		(select rownum rn, tt.* from
+ 		(select * from sellerManagement where userid = #{userid} order by item_seq desc)tt
+ 		) where rn between #{startNum} and #{endNum}
+ 	</select>
+ 	
+ 	<!-- 찜 수 가져오기 -->
+ 	<select id="getWishCount" parameterType="int" resultType="int">
+ 		select nvl(count(*), 0) from wishlist where item_seq=#{item_seq}
+ 	</select>
+ 	
+ 	<!-- 댓글 수 가져오기 -->
+ 	<select id="getCommentCount" parameterType="int" resultType="int">
+ 		select nvl(count(*), 0) from itemcomment where item_seq=#{item_seq}
+ 	</select>
+ 	
+ 	<!-- 총 글의 수 가져오기 -->
+ 	<select id="getSellerManagementTotalA" parameterType="String" resultType="int">
+ 		select count(*) from item where userid = #{userid}
+ 	</select>
+ 	
+ 	<!-- 최근 수정일 업데이트 -->
+ 	<update id="sellerLogtimeUpdate" parameterType="int">
+ 		update item set logtime = sysdate where item_seq = #{item_seq}
+ 	</update>
+ 	
+ 	<!-- 게시글 삭제하기 -->
+ 	<delete id="sellerManagementDelete" parameterType="int">
+ 		delete from item where item_seq = #{item_seq}
+ 	</delete>
+ 	
+ 	<!-- 게시글 수정하기 -->
+ 	<update id="sellerModify" parameterType="java.util.Map">
+ 		update item set 
+ 			img1 = #{img1}, img2 = #{img2}, img3 = #{img3},
+ 			itemSubject = #{itemSubject}, 
+ 			category1 = #{category1}, category2 = #{category2}, category3 = #{category3},
+ 			condition = #{condition}, item_state = #{item_state}, item_location = #{item_location},
+ 			item_price=#{item_price}, nego=#{nego}, item_content=#{item_content},
+ 			hashtag1=#{hashtag1}, hashtag2=#{hashtag2}, hashtag3=#{hashtag3},
+ 			buyer_key=#{buyer_key}, hit=#{hit}, qty=#{qty}, logtime=sysdate
+ 			where item_seq = #{item_seq}
+ 	</update>
+ 	
+ 	<!-- 검색한 총 글 수 -->
+ 	<select id="getManagementSearchTotalA" parameterType="java.util.Map" resultType="int">
+ 		select count(*) from sellerManagement where userid=#{userid} and item_state=#{item_state} and item_subject like '%'||#{keyword}||'%'
+ 	</select>
+ 	
+ 	<!-- 검색 -->
+ 	<select id="getsellerManagementSearch" parameterType="java.util.Map" resultType="sellerManagement">
+ 		select item_seq, img1, item_subject, item_state, item_price, 
+ 				wish_count, comment_count, logtime from
+ 		(select rownum rn, tt.* from
+ 		(select * from sellerManagement where userid = #{userid} and item_state=#{item_state} and item_subject like '%'||#{keyword}||'%' order by item_seq desc)tt
+ 		) where rn between #{startNum} and #{endNum}
+ 	</select>
+ 	
+ 	<update id="itemstateChange" parameterType="java.util.Map">
+ 		update item set item_state = #{item_state} where item_seq = #{item_seq}
+ 	</update>
+ 	
+ </mapper>

@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+.adminContainer {
+	width: 1024px;
+	height: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.adminProfile {
+	display: inline-block;
+	float: left;
+	background: rgb(238, 238, 238);
+	width: 310px;
+	height: 310px;
+}
+
+.adminProfileImg {
+	width: 150px;
+	height: 150px;
+	margin: 0 auto;
+	border-radius: 50%; /* 프로필 사진을 원으로 보이게하려고 */
+	-webkit-border-radius: 50%; /* IE8이하의 브라우저에는 CSS3가 적용되지않아서 지원하기위해 써줌 */
+	-moz-border-radius: 50%; /* IE8이하의 브라우저에는 CSS3가 적용되지않아서 지원하기위해 써줌 */
+	margin-bottom: 15px;
+	margin-top: 40px;
+	overflow: hidden;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 150px;
+	object-fit: fill;
+	position: relative;
+	align-items: center;
+	color: rgb(155, 153, 169);
+	font-size: 1rem;
+}
+
+#admineName {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.adminInfo {
+	flex: 1 0 0%;
+	padding: 0px 30px;
+	border-top: 1px solid rgb(238, 238, 238);
+	border-right: 1px solid rgb(238, 238, 238);
+	border-bottom: 1px solid rgb(238, 238, 238);
+	display: flex;
+	height: 310px;
+	flex-direction: column;
+}
+
+#adminInfoName {
+	height: 64px;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+#adminSpec {
+	height: 100px;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	border-bottom: 1px solid rgb(238, 238, 238);
+	margin-bottom: 20px;
+	flex-shrink: 0;
+}
+
+#adminSpec2 {
+	margin-right: 30px;
+	font-size: 22px;
+	color: rgb(136, 136, 136);
+	display: flex;
+}
+
+#adminUserCnt {
+	margin-left: 10px;
+	color: rgb(136, 136, 136);
+	/* 	font-weight: bold; */
+}
+
+#adminItemCnt {
+	margin-left: 10px;
+	color: rgb(136, 136, 136);
+	/* font-weight: bold; */
+}
+
+.adminUserDelete {
+	float: right;
+}
+
+/*admin*/
+.resultid {
+	margin-right: 10px;
+}
+
+.reportDeleteTargetDiv {
+	/* display:flex; */
+	border-bottom: 1px solid rgb(238, 238, 238);
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+.reportDeleteTargetDiv span {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+#noticeSubject{
+	border:none;
+}
+#noticeContent{
+	resize:none;
+	border:none;
+}

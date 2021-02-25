@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+.qnaImgDiv {
+    padding-top: 10px;
+}
+
+#wrap {
+	background: #eeeeee;
+}
+
+#tabArea {
+	background: #eeeeee;
+	padding-top: 20px;
+	padding-bottom: 50px;
+}
+
+#tabDiv {
+	min-width: 1024px;
+	width: 1024px;
+	margin: 0 auto;
+	background: #ffffff;
+	text-align: center;
+	justify-content: space-between;
+}
+
+/*라디오버튼 숨김*/
+.tabs {
+	display: none;
+}
+
+/* 라디오버튼의 라벨화 */
+.tabLabel {
+	display: inline-block;
+	width: 290px;
+	margin: 0 auto;
+	padding: 20px;
+	font-weight: 600;
+	font-size: 15px;
+	text-align: center;
+	border: 1px solid transparent;
+}
+
+.tabLabel:hover {
+	color: gray;
+	cursor: pointer;
+}
+
+/*input 클릭시, label 스타일*/
+.tabs:checked+label {
+	color: green;
+	border-bottom: 3px solid green;
+}
+
+/* tab이 체크되면 tab부터 content까지의 모든 자식에 대한 스타일  */
+#tab1:checked ~ #qnaWriteSection, #tab2:checked ~ #qnaListSection {
+	display: block;
+}
+
+/* 선택에 따라 추가될 내용 스타일 */
+section {
+	display: none;
+	border-top: 1px solid #ddd;
+}
+
+.qnaWriteDiv {
+	display: inline-block;
+	width: 100%;
+}
+
+.qnaSelect1Div select {
+	width: 100%;
+}
+
+.qnaSelect2Div select {
+	width: 100%;
+}
+
+/* .qnaPhotoDiv {
+	display: flex;
+	flex-wrap: wrap;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	list-style: none;
+	padding: 0;
+}
+ */
+.qnaWriteBtnDiv {
+	display: flex;
+	width: 723px;
+	justify-content: space-between;
+	margin: 0 auto;
+	padding-bottom: 10px;
+}
+
+.qnaWritePhoto {
+	display: none;
+	width: 150px;
+	height: 38px;
+	border-radius: 2px;
+	color: rgb(255, 80, 88);
+	cursor: pointer;
+	position: relative;
+}
+
+
+
+.photoli {
+	list-style: none;
+	display: inline-block;
+	margin: 0 auto;
+	padding-right: 5px;
+}
+
+/* 문의 내역 */
+.qnaSubjectDiv {
+	display: flex;
+	width: 723px;
+	justify-content: space-between;
+}
+
+.qnaSubjectDiv img {
+	margin: 10px;
+}
+
+.qnaListDiv {
+	width: 723px;
+	margin: 0 auto;
+	display: block;
+	/* float:left; */
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.qnaSelectDiv {
+	font-size: 17px;
+	font-weight: 600;
+	padding: 10px;
+	padding-bottom: 0;
+	margin: 0 auto;
+	display: inline-block;
+	text-align: left;
+	width: 100%;
+}
+
+.qnaSelectDiv:hover {
+	cursor: pointer;
+}
+
+.arrowImg {
+	/* position: absolute; */
+	top: 19px;
+	left: 95%;
+	display: inline-block;
+	margin-left: 100px;
+}
+
+.qnaDate {
+	font-size: 13px;
+	font-weight: 600;
+	padding: 10px;
+	padding-top: 0;
+	margin: 0 auto;
+	color: rgb(204, 204, 204);
+}
+
+.qnaContent {
+	display: none;
+	text-align: left;
+	margin: 0px;
+	padding: 10px;
+	white-space: pre-line;
+	background-color: #eeeeee;
+	position: relative;
+	margin-bottom: 10px;
+	
+}
+
+.qnaReply {
+	display: none;
+	text-align: left;
+	margin: 0px;
+	padding: 10px;
+	white-space: pre-line;
+	background-color: #eeeeee;
+	position: relative;
+	
+}
+
+.qnaState {
+	color: red;
+	font-family:sans-serif;
+	float: right;
+}
+
+.qnaDate {
+	text-align: left;
+}
+
+/* .qnaImgDiv img {
+	width : 130px;
+	height : 130px;
+} */
+
+

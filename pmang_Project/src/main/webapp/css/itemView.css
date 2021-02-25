@@ -1,0 +1,733 @@
+@charset "UTF-8";
+
+/* 전체 영역 */
+#itemViewDiv{
+	margin: 0 auto;
+	width:1024px;
+	min-width: 1024px;
+	padding-top : 30px;
+}
+
+/* 카테고리  영역 */
+.categoryDiv {
+	display : flex;
+}
+
+.home {
+	margin: 6px 1px;
+	display: flex;
+	float : left;
+	font-size: 12px;
+	align-items: center;
+}
+
+.firstCategory, .secondCategory, .thirdCategory {
+	align-items: center;
+	position: relative;
+	display: flex;
+}
+
+.selectItem1, .selectItem2, .selectItem3 {
+    border: 1px solid rgb(238, 238, 238);
+    display: flex;
+    width: 190px;
+    max-width : 200px;
+    height: 28px;
+    align-items: center;
+    position: relative;
+    font-size: 12px;
+    color: rgb(77, 77, 77);
+    background: rgb(255, 255, 255);
+}
+
+.firstCategory > img, .secondCategory > img, .thirdCategory > img  {
+	margin: 0px 10px;
+}
+
+ .select1, .select2, .select3 {
+	color : red;
+} 
+
+.top1, .top2, .top3 {
+	display: flex;
+    align-items: center;
+    padding: 0px 25px 0px 10px;
+    position: relative;
+    width: 100%;
+}
+
+.top1 img, .top2 img, .top3 img {
+	position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.down1, .down2, .down3 {
+	position: absolute;
+    top: 27px;
+    left: -1px;
+    /* width: calc(100% + 2px); */
+    width : 100%;
+    background: rgb(255, 255, 255);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1;
+    border-left: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid rgb(238, 238, 238);
+    border-right: 1px solid rgb(238, 238, 238);
+    display: none;
+}
+
+.down1 a, .down2 a, .down3 a  {
+	/* width: 100%; */
+    height: 28px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.down1 a:hover, .down2 a:hover, .down3 a:hover  {
+	color: red;
+}
+
+/* 아이템 클릭 영역 */
+.detailItemDiv {
+	margin-top: 20px;
+    /* height: 244px; */
+    transition: height 0.3s ease-in-out 0s;
+    overflow: hidden;
+}
+
+.detailItem {
+	width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.detailItem div {
+	width: 204px;
+    height: 48px;
+    margin-bottom: 1px;
+}
+
+.detailItem div a {
+	margin : 0;
+	padding: 0;
+	width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    font-size: 12px;
+    align-items: center;
+    display: flex;
+    padding: 0px 20px;
+}
+
+.entireView {
+	width: 204px; height: 48px;
+    margin-bottom: 1px;
+    background: rgb(255, 255, 255);
+    padding: 0px 20px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(33, 33, 33);
+}
+
+
+
+
+
+
+/* 상품영역 */
+
+
+/***** 모달창 구현 css *****/
+
+/* 체크박스 가리기 */
+#imgCheckBox {
+	display:none;
+}
+
+/* 확대 버튼  */
+#imgViewBtn {
+	cursor:pointer;
+}
+
+/* 모달창 전체 영역*/
+#modalView {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:100;
+}
+/* 모달안의 상품 제목 */
+#modalItemName{
+	position : fixed;
+	text-align : center;
+	top:5%;
+	left:calc(50% - 230px);
+	width:500px;
+	height:100px;
+	font-size:30px;
+	color:white;
+	z-index:100;
+}
+
+
+/* 종료버튼 */
+#closeBtn {
+	position:fixed;
+	width:30px;
+	height:30px;
+	top:3%;
+	right:3%;
+	z-index:100;
+}
+
+/*  검은 배경 */
+#blackBackground {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100vw;
+	height:100vh;
+	background:rgba(0,0,0,.8);
+	z-index:90;
+}
+
+/* 모달 안보이게 기본 셋팅 */
+.modalComp {
+	display:none; 
+}
+
+/***********/
+
+
+/***** 슬라이드 쇼 구현 *****/
+
+/* 전체영역 */
+#slideShowPage{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100vw;
+	height:100vh;
+	
+}
+/* a{text-decoration:none; color:#666;}
+a:hover{color:#1bc1a3;}
+body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;} */
+
+/* 속성을 위한 겉영역 */
+#slideShowArea{
+	position:absolute;
+	left:0;
+	top:0;
+  	width:100%;
+  	height:100%;
+  	margin:0 auto;
+  	color:#fff;
+}
+/* 사진과 버튼들을 담는 실제 영역 */
+#slideShowDiv{
+	position:absolute;
+	left:0;
+	top:0;
+  	width:100%;
+  	height:100%;
+}
+
+/* 사진과 글이 담기는 div */
+#slideShow{
+	width:100%;
+	height:750px;
+	position:absolute;
+	margin-left: calc(50% - 350px);
+	margin-top: 100px;
+	z-index:90;
+}
+
+/* 사진들이 담겨있는 div */
+#slideShowDiv #slideShow{
+	display:flex;
+	overflow:hidden;
+	z-index:100;
+}
+
+/* 사진한장에 대한 div */
+#slideShowDiv #slideShow > div
+{
+	width:700px;
+	height:700px;
+	margin:25px;
+}
+
+/* 사진 */
+#slideShowDiv #slideShow div img{
+	width:700px;
+	height: 700px;
+	position:relative;
+}
+
+
+
+
+
+
+	
+/***********/	
+	
+#itemDiv{
+	width:2000px;
+    display: flex;
+    padding:20px 0px;
+}
+#imageArea{
+	position:relative;
+}
+
+#imgDetailBtn{
+	position:absolute;
+	top:85%;
+	left:83%;
+	cursor : pointer;
+}
+
+#imgLeftBtn{
+	position:absolute;
+	top:50%;
+	left:10%;
+	transform:translate(-50%,-50%);
+}
+#imgRightBtn{
+	position:absolute;
+	top:50%;
+	left:87%;
+	transform:translate(-50%,-50%);
+}
+#itemPic{ /* 보여지는 사진 한장을 위한 div */
+    margin-right: 20px;
+    flex-shrink: 0;
+    width: 500px;
+    height: 500px;
+    overflow:hidden;
+}
+
+#itemPictureDiv{/* 사진 전체를 담는 div */
+	width:300%;
+}
+
+.itemPicture{/* 사진 한장 */
+	margin-left:0px;
+	width:500px;
+	height:500px;
+	
+}
+
+#itemArea{
+   /*  flex-grow: 1; */
+}
+
+#nameNPrice{
+    border-bottom: 1px solid rgb(238, 238, 238);
+    font-size: 25px;
+    width: 100%;
+}
+
+#itemPrice{
+	font-weight: 400;
+	position: relative;
+	left : 0;
+}
+.priceSpan{
+	left-margin:10px;
+	font-size: 45px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+#postInfo{
+	height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  
+}
+
+#likeHitDate{
+	height: 30px;
+    margin-bottom:10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.likeDateHit{
+	width:80px;
+	height: 100%;
+	display: flex;
+	float:left;
+	align-items: center;
+	color: rgb(204, 204, 204);
+	font-size: 16px;
+}
+
+#myBtn{
+	width:100px;
+	margin-left:50px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	color: rgb(204, 204, 204);  
+	cursor: pointer;  
+}
+
+.dealInfo{
+	display: flex;
+	margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.infoQ{
+	width: 120px;
+    padding-right: 25px;
+    text-size : 20px; 
+}
+
+.infoA{
+	width: 100%;
+    text-size : 20px; 
+}
+
+#buttonArea{
+	display: flex;
+    justify-content: space-between;
+    vertical-align : middle;
+}
+
+#buttonArea>div{
+	flex: 1 1 0%;
+	font-weight:600;
+	margin-right: 10px;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	font-size:20px;
+	height:60px;
+	width:100px;
+	color:white;
+	margin-bottom:0px;
+
+}
+
+#like{
+	background-color:gray;
+	cursor:pointer;
+}
+#contact{
+	background-color:green;
+	cursor:pointer;
+}
+#pay{
+	background-color:red;
+	cursor:pointer;
+}
+
+
+
+
+
+/* 상품 정보 및 문의 영역 */
+
+#content {
+	width: 1024px;	
+	margin: 0px auto;	
+
+}
+/* 탭메뉴 */
+#contentMenuDiv{
+	padding: 0px;
+	margin: 0 auto;
+	width: 1024px;
+	height: 60px;
+}
+#contentMenu {	
+	padding: 0px;
+	margin: 0 px;
+}
+
+.contentMenu { /* select x설정 */
+	width:510px;
+	border: 1px solid #eee;
+	border-bottom-color: black;
+	background: #fafafa;
+	padding: 20px -0px;
+	margin: 0 auto;
+	list-style: none;
+	font-size:16px;
+	font-weight: bold;
+	color: gray;
+	text-align: center;
+	cursor: pointer; 
+	float: left;
+	display: inline-block;	
+}
+#contentMenu .current {/* select o설정: current클래스를 js로 변경해줄것임 */
+	border-color: black;
+	border-bottom-color: white;
+	background: white;
+	color: black;
+}
+/* ==================탭메뉴 */
+/* 상품정보 */
+.contentSection {/* 정보,문의 공통 */
+	margin:0 auto; 
+	padding: 10px;
+	width: 1024px;
+}
+/* 거래지역, 카테고리, 상품태그 div */
+#productInfo {
+	border-bottom: solid 1px #eee;
+	border-top: solid 1px #eee;
+	padding: 10px;
+	/* width: 70%; */
+	margin:0 auto; 
+	text-align: center;
+
+}
+#productInfo .border {
+	border-left: 1px solid #eee;
+}
+.productInfo {
+	display: inline-block;
+}
+.productInfo div {
+	display: block;
+	padding: 15px 30px;
+}
+.productInfoDiv{
+	color: #c8c8c8;
+	font-size: 15px;
+	font-weight: bold;
+	width:310px;
+}
+.productInfo div a {
+	text-decoration: none;
+	font-size: 15px;
+	color: black;
+}
+/* ==============상품정보 */
+/* 상품문의 */
+#reply {
+	width: 100%;
+    padding-right: 100px;
+}
+.replyDiv {
+	padding: 25px;
+	border: solid #eee 1px;
+}
+.replyDiv span{
+	font-size: 13px;
+}
+.replyDiv textarea {
+	width: 100%;
+	resize: none;
+}
+/* 등록버튼css.. */
+#replyBtn {
+  background:green;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:30px;
+  font-size:15px;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  float: right;	
+}
+#replyBtn:hover{
+  background:#fff;
+  color:green;
+}
+#replyBtn:before,#replyBtn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: green;
+  transition:400ms ease all;
+}
+#replyBtn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+#replyBtn:hover:before,#replyBtn:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+/* -------------등록버튼css */
+
+.replyList {
+	width: 90%;
+	padding: 15px;
+}
+.profilePic{
+	border-radius:50%;
+	margin:20px;
+	cursor:default;
+
+}
+.replyUser {
+	width: 100%;
+	font-size: 14px;
+}
+.replyUser{
+	display: inline-block;
+	float: left;
+	width:100%;
+	position: relative;
+}
+.replyUser a{
+	width: 20%;
+	text-align: center;
+	text-decoration: none;
+	color: gray;
+}
+.replyTot {
+	width: 80%;
+	display: inline-block;
+	padding: 20px;
+	padding-left: 20px;
+}
+.replyTot div {
+	padding-top:5px;
+	padding-bottom:5px;
+
+}
+.replyTot div div {
+	display: inline-block;
+	color: gray;
+}
+.replyDate {
+	position: absolute;
+	right: 10px;
+	color: #c8c8c8;
+}
+
+#moreBtn{
+	
+	clear:both;
+	text-align:center;
+	padding:20px;
+	display:flex;
+	justify-content:center;
+	cursor:pointer;
+}
+
+.replyPics{
+	margin-left:10px;
+}
+
+
+/*///////////////////////////////////////*/
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+ul{
+	/* margin-left:500px; */
+}
+
+/* a {
+  text-decoration: none;
+} */
+
+
+.slide {
+  position: relative;
+  top:15%;
+  left:35%;
+  z-index:100;
+}
+
+.panel {
+  width: 300%;
+  height:100%;
+  margin-left:0px;
+
+}
+
+.panel:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.modalItemPic{
+	width:700px;
+	height:700px;
+}
+
+.panel>li>a>div>img {
+	width:700px;
+	height:700px;
+
+}
+
+
+.panel>li {
+  width: 800px;
+  height: 700px;
+  float: left;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
+
+
+
+
+.prev {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 3%;
+  cursor: pointer;
+}
+
+.next {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  right :3%;
+  cursor: pointer;
+}
+
+
+

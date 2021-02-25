@@ -1,0 +1,585 @@
+@charset "UTF-8";
+
+        /* The Modal (background) */
+#myBtn{
+	height: 19px;
+	background-color: rgb(255,255,255);
+	color: rgb(136, 136, 136);
+    font-size: 5px;
+    display: flex;
+    align-items: unset;
+    margin-right: 25px;
+    position: relative;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 600px;
+    height: auto;                       
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.report{
+	width: 480px;
+	height: auto;
+	text-align: center;
+	margin-top: 45px;
+	margin-bottom: 45px;
+	margin-left: 60px;
+	margin-right: 50px;
+	font-family: sans-serif;
+}
+.report-header{
+	display: flex;
+   	justify-content: space-between;
+    align-items: flex-start;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+    direction: ltr;
+    text-align: left;
+    color: rgb(33, 33, 33);
+    letter-spacing: -0.5px;
+}
+
+.report-subject{
+	letter-spacing: 5.2px;
+    font-size: 26px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(33, 33, 33);
+    margin-bottom: 45px;
+}
+
+.report-ad, 
+.report-un, 
+.report-dan, 
+.report-viol, 
+.report-write{
+	height: auto;
+	border: 1px solid rgb(240, 240, 240);
+	border-bottom: rgb(0,0,0);
+	border-left: rgb(0,0,0);
+	border-right: rgb(0,0,0);
+}
+
+.report-qna{
+	border: 1px solid rgb(190, 190, 190);
+	border-bottom: rgb(0,0,0);
+	border-left: rgb(0,0,0);
+	border-right: rgb(0,0,0);
+}
+
+.report-content span{
+	font-size: 16px;
+	cursor:pointer;
+	float: left;
+}
+
+.hide{
+	display:none;
+	padding: 0px 20px;
+	width: 480px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.report-ad-ad, 
+.report-un-ad, 
+.report-dan-ad, 
+.report-viol-ad{
+	height: 30px;
+    text-align: left;
+}
+.report-write-ad{
+	width: 100%;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+    direction: ltr;
+    text-align: left;
+    /* color: rgb(33, 33, 33); */
+    letter-spacing: -0.5px;
+}
+
+.resiDiv{
+	margin-bottom : 10px;
+	border: 1px solid rgb(238, 238, 238);
+}
+
+.report-write-ad button{
+	width: 56px;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+    direction: ltr;
+    text-align: left;
+    /* color: rgb(33, 33, 33); */
+    letter-spacing: -0.5px;
+}
+
+.report-content button {
+    color: rgb(247, 47, 51);
+    appearance: button;
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    text-transform: none;
+    overflow: visible;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    text-rendering: auto;
+    word-spacing: normal;
+	text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    align-items: flex-start;
+}
+.report-write textarea{
+	width: 86%;
+    height: 80px;
+    resize: none;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    margin-right: 25px;
+    border: 1px solid rgb(238, 238, 238);
+    direction: ltr;
+    text-align: left;
+    color: rgb(33, 33, 33);
+    letter-spacing: -0.5px;
+    outline: 0px;
+}
+.report-write button{
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(136, 136, 136);
+    font-size: 13px;
+    background: rgb(255, 255, 255);
+    appearance: button;
+}
+.report-ad-div, 
+.report-un-div,
+.report-dan-div,
+.report-viol-div,
+.report-write-div,
+.report-qna-div{
+	width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* color: rgb(102, 102, 102); */
+    height: 60px;
+    font-size: 16px;
+   /*  background: rgb(249, 249, 249); */
+}
+.report-common{
+	cursor: pointer;
+}
+.etc{
+	width: 440px;
+	height: 38px;
+	display: flex;
+    margin-top: 10px;
+    margin-botton: 100px;
+    align-items: center;
+    border: 1px solid rgb(238, 238, 238);
+    width: 100%;
+    background: rgb(255, 255, 255);
+    font-size: 13px;
+}
+.etc input{
+	width: 372px;
+	height: 36px;
+	flex: 1 1 0%;
+    height: 36px;
+    padding: 0px 20px;
+    appearance: none;
+    border: 0px;
+    text-rendering: auto;
+   	word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    background-color: -internal-light-dark(
+	    rgb(255, 255, 255), 
+	    rgb(59, 59, 59)
+	);
+    font: 400 13.3333px Arial;
+}
+.etc button{
+	border: 1px solid rgb(238, 238, 238);
+    height: 28px;
+    display: flex;
+    align-items: center;
+    width: 56px;
+    justify-content: center;
+    margin-right: 10px;
+    color: rgb(136, 136, 136);
+	appearance: button;
+	background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    overflow: visible;
+}
+.report-qna-div button{
+	display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: 10px;
+    padding: 0px 20px;
+    border: 1px solid rgb(238, 238, 238);
+    color: rgb(136, 136, 136);
+    font-size: 13px;
+    height: 32px !important;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+}
+
+
+
+
+
+/* 댓글 신고용 */ 
+#myBtn111{
+	height: 19px;
+	background-color: rgb(255,255,255);
+	color: rgb(136, 136, 136);
+    font-size: 5px;
+    display: flex;
+    align-items: unset;
+    margin-right: 25px;
+    position: relative;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+}
+.modal111 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content111 {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 600px;
+    height: auto;                       
+}
+.close111 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close111:hover,
+.close111:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.report111{
+	width: 480px;
+	height: auto;
+	text-align: center;
+	margin-top: 45px;
+	margin-bottom: 45px;
+	margin-left: 60px;
+	margin-right: 50px;
+	font-family: sans-serif;
+}
+.report-header111{
+	display: flex;
+   	justify-content: space-between;
+    align-items: flex-start;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+    direction: ltr;
+    text-align: left;
+    color: rgb(33, 33, 33);
+    letter-spacing: -0.5px;
+}
+
+.report-subject111{
+	letter-spacing: 5.2px;
+    font-size: 26px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(33, 33, 33);
+    margin-bottom: 45px;
+}
+
+.report-ad111, 
+.report-un111, 
+.report-dan111, 
+.report-viol111, 
+.report-write111{
+	height: auto;
+	border: 1px solid rgb(240, 240, 240);
+	border-bottom: rgb(0,0,0);
+	border-left: rgb(0,0,0);
+	border-right: rgb(0,0,0);
+}
+
+.report-qna111{
+	border: 1px solid rgb(190, 190, 190);
+	border-bottom: rgb(0,0,0);
+	border-left: rgb(0,0,0);
+	border-right: rgb(0,0,0);
+}
+
+.report-content111 span{
+	font-size: 16px;
+	cursor:pointer;
+	float: left;
+}
+
+.hide111{
+	display:none;
+	padding: 0px 20px;
+	width: 480px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.report-ad-ad111, 
+.report-un-ad111, 
+.report-dan-ad111, 
+.report-viol-ad111{
+	height: 30px;
+    text-align: left;
+}
+.report-write-ad111{
+	width: 100%;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+    direction: ltr;
+    text-align: left;
+    /* color: rgb(33, 33, 33); */
+    letter-spacing: -0.5px;
+}
+
+.resiDiv111{
+	margin-bottom : 10px;
+	border: 1px solid rgb(238, 238, 238);
+}
+
+.report-write-ad111 button{
+	width: 56px;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+    direction: ltr;
+    text-align: left;
+    /* color: rgb(33, 33, 33); */
+    letter-spacing: -0.5px;
+}
+
+.report-content111 button {
+    color: rgb(247, 47, 51);
+    appearance: button;
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    text-transform: none;
+    overflow: visible;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    text-rendering: auto;
+    word-spacing: normal;
+	text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    align-items: flex-start;
+}
+.report-write111 textarea{
+	width: 86%;
+    height: 80px;
+    resize: none;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    margin-right: 25px;
+    border: 1px solid rgb(238, 238, 238);
+    direction: ltr;
+    text-align: left;
+    color: rgb(33, 33, 33);
+    letter-spacing: -0.5px;
+    outline: 0px;
+}
+.report-write111 button{
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(136, 136, 136);
+    font-size: 13px;
+    background: rgb(255, 255, 255);
+    appearance: button;
+}
+.report-ad-div111, 
+.report-un-div111,
+.report-dan-div111,
+.report-viol-div111,
+.report-write-div111,
+.report-qna-div111{
+	width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* color: rgb(102, 102, 102); */
+    height: 60px;
+    font-size: 16px;
+   /*  background: rgb(249, 249, 249); */
+}
+.report-common111{
+	cursor: pointer;
+}
+.etc111{
+	width: 440px;
+	height: 38px;
+	display: flex;
+    margin-top: 10px;
+    margin-botton: 100px;
+    align-items: center;
+    border: 1px solid rgb(238, 238, 238);
+    width: 100%;
+    background: rgb(255, 255, 255);
+    font-size: 13px;
+}
+.etc111 input{
+	width: 372px;
+	height: 36px;
+	flex: 1 1 0%;
+    height: 36px;
+    padding: 0px 20px;
+    appearance: none;
+    border: 0px;
+    text-rendering: auto;
+   	word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    background-color: -internal-light-dark(
+	    rgb(255, 255, 255), 
+	    rgb(59, 59, 59)
+	);
+    font: 400 13.3333px Arial;
+}
+.etc111 button{
+	border: 1px solid rgb(238, 238, 238);
+    height: 28px;
+    display: flex;
+    align-items: center;
+    width: 56px;
+    justify-content: center;
+    margin-right: 10px;
+    color: rgb(136, 136, 136);
+	appearance: button;
+	background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    overflow: visible;
+}
+.report-qna-div111 button{
+	display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: 10px;
+    padding: 0px 20px;
+    border: 1px solid rgb(238, 238, 238);
+    color: rgb(136, 136, 136);
+    font-size: 13px;
+    height: 32px !important;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+}

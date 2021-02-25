@@ -1,0 +1,28 @@
+@charset "UTF-8";
+#wrap{
+	width: 1500px;
+	margin: 0 auto;
+}
+
+#header{
+	position: relative;
+}
+
+#logo{
+	float : left;
+	padding: 20px 0 20px 100px;
+}
+
+#search {
+	
+	width: 444px;
+    height: 24px;
+    padding: 13px 15px;
+    margin: 1px;
+    background-color: #fff;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000;
+    font-weight: 700;
+    outline: 0
+}

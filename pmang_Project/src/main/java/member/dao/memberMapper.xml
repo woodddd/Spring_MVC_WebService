@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberSQL">
+	<!-- 로그인 -->
+	<select id="login" parameterType="String" resultType="member">
+		select * from usertable where userId=#{userId}
+	</select> 
+	
+	<!-- 회원가입 -->
+	<insert id="write" parameterType="member">
+		insert into usertable (userName, userId, pwd, gender, email1, email2, zipcode, addr1, addr2, tel1, tel2, tel3)
+		values (#{userName}, #{userId}, #{pwd}, #{gender}, #{email1}, #{email2}, #{zipcode}, #{addr1}, #{addr2}, #{tel1}, #{tel2}, #{tel3})
+	</insert>
+	
+	<!-- 아이디 중복체크 -->	
+	<select id="checkId" parameterType="String" resultType="member">
+		select * from usertable where userId=#{userId}
+	</select>
+	
+	<!-- 우편번호 -->
+	<select id="checkPostSearch" parameterType="java.util.Map" resultType="zipcode">
+		select * from newzipcode 
+		where sido like '%'||#{sido}||'%' 
+		and nvl(sigungu,'0') like '%'||#{sigungu}||'%' 
+		and roadname like '%'||#{roadname}||'%'
+	</select>
+	
+	<!-- 메일인증키 -->
+	<insert id="GetKey" parameterType="java.util.Map">
+		update usertable set email_key = #{email_key} where userId = #{userId}
+	</insert>
+	
+	<!--회원 인증키(난수) Y로 변경 -->
+	<update id="regSuccess" parameterType="java.util.Map">
+		update usertable set email_key = 'Y' where userId = #{userId} and email_key = #{email_key}
+	</update>
+	
+	<!-- kakao id 확인 -->
+	<select id="checkKakaoId" parameterType="String" resultType="Integer">
+		select count(*) from usertable where userId=#{kakaoId}
+	</select>
+	
+	<!-- kakao 회원가입  -->
+	<insert id="kakaoWrite" parameterType="member">
+		insert into usertable (userName, gender, email1, email2, userId)
+		values (#{userName}, #{gender}, #{email1}, #{email2}, #{kakaoId})
+	</insert>
+	
+	<!-- 아이찾기 -->
+	<select id="findId" parameterType="member" resultType="String">
+		select userId from usertable where email1=#{email1} and email2=#{email2} and userName=#{userName}
+	</select>
+	
+	<!-- 비밀번호찾기 -->
+	<select id="findPwd" parameterType="member" resultType="member">
+		select * from usertable where email1=#{email1} and email2=#{email2} and userId=#{userId}	
+	</select>
+	
+	<!-- 비밀번호변경(임시비밀번호) -->
+	<update id="updatePwd" parameterType="member">
+		update usertable set pwd = #{pwd} where userId=#{userId}
+	</update>
+	
+	<!-- 한사람의 정보 -->
+	<select id="getMember" parameterType="String" resultType="member">
+		select * from usertable where userId=#{userId}
+	</select>
+	
+	<update id="modify" parameterType="member">
+		update usertable set userName=#{userName}
+							, pwd=#{pwd}
+							, gender=#{gender}
+							, email1=#{email1}
+							, email2=#{email2}
+							, zipcode=#{zipcode}
+							, addr1=#{addr1}
+							, addr2=#{addr2}
+							, tel1=#{tel1}
+							, tel2=#{tel2}
+							, tel3=#{tel3} where userId=#{userId}
+	</update>
+	
+	<!-- 탈퇴 패스워드 체크 -->
+	<select id="deleteId" parameterType="String" resultType="member">
+		delete from usertable where userId=#{userId}
+	</select>
+	
+	<delete id="deleteMember" parameterType="member">
+        delete from usertable where pwd=#{pwd}
+    </delete>
+	
+	<!-- seller -->
+	
+	<!-- 상품등록쪽 -->
+	<insert id="sellerWrite" parameterType="item">
+	insert into item values(item_seq.nextval,
+									#{userId},
+									   #{img1},
+									   #{img2},
+									   #{img3},
+									   #{item_subject},
+									   #{category1},
+									   #{category2},
+									   #{category3},
+									   #{condition},
+									       'sell',<!-- #{item_state} -->
+									   #{item_location},
+									   #{item_price},
+									   #{nego},
+									   #{item_content},
+									   #{hashtag1},
+									   #{hashtag2},
+									   #{hashtag3},
+									   #{qty},<!-- #{qty} -->
+									   0,<!-- #{buyer_Key} -->
+									   0,<!-- #{hit} -->
+									   sysdate)
+									   
+	</insert>
+	
+	<select id="checkRecentlyLoc" parameterType="String" resultType="recently">
+		select * from recentlyTable where userid = #{userId}
+	</select>
+	
+	
+	
+	
+	<insert id="insertRecentlyLoc" parameterType="java.util.Map">
+		insert into recentlyTable values(#{userId}, #{address})
+	</insert>
+	
+	
+	
+	
+	<delete id="deleteRecentlyLoc" parameterType="java.util.Map">
+		delete recentlyTable where userId = #{userId} and address = #{address}
+	</delete>
+
+
+	<select id="searchlocation" parameterType="String" resultType="zipcode">
+		select DISTINCT sido, sigungu, yubmyundong from newzipcode where sigungu like '%'||#{address}||'%' or yubmyundong like '%'||#{address}||'%' or roadname like '%'||#{address}||'%' or sido like '%'||#{address}||'%' order by sido
+	</select>
+	<select id="adminUserDeleteSearch" parameterType="String" resultType="String">
+		select userid from usertable where userid=#{userid}
+	</select>
+	
+	<delete id="adminUserDelete" parameterType="String">
+		delete from usertable where userid=#{userid}
+	</delete>
+	
+	<select id="getSellerLocation" parameterType="String" resultType="String">
+		select addr1 from userTable where userId = #{userId}
+	</select>
+	
+	<select id="mainLoc" parameterType="java.util.Map" resultType="zipcode">
+		select DISTINCT sido, sigungu, yubmyundong from newzipcode where (sigungu like '%'||#{address}||'%' or yubmyundong like '%'||#{address}||'%' or roadname like '%'||#{address}||'%') and sido like '%'||#{sido}||'%'		
+	</select>
+
+</mapper>

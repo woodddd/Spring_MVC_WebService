@@ -1,0 +1,613 @@
+@charset "UTF-8";
+
+.bodyMain {
+	width: 1024px;
+	display: block;
+}
+
+.bodyMainHeader {
+	display: block;
+	width: 100%;
+}
+
+.bodyMainHeader>* {
+	margin-right: 1rem;
+}
+
+.bodyMainHeader>form, div {
+	display: flex;
+}
+
+.management_nav {
+	display: block;
+}
+
+div {
+	display: block;
+}
+
+.sellManagementTable {
+	width: 100%;
+	border-collapse: collapse;
+	display: table;
+	text-align: center;
+	table-layout: fixed;
+}
+
+.sellManagementThead {
+	font-weight: 500;
+	border-top: 1px solid rgb(30, 29, 41);
+	border-bottom: 1px solid rgb(30, 29, 41);
+	display: table-header-group;
+}
+
+.sellManagementThead>th {
+	display: table-cell;
+	text-align: center;
+	font-weight: bold;
+}
+
+.sellManagementTbody {
+	display: table-row-group;
+}
+
+.sellManagementThead>tr {
+	height: 2.5rem;
+	display: table-row;
+}
+
+.sellManagementTbody td {
+	display: table-cell;
+	text-align: center;
+}
+
+.headerInputForm {
+	width: 400px;
+	height: 3rem;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	position: relative;
+	margin-right: 1rem;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.selectQtyBox img, .selectStatusBox img, .sellManagementTbody img,
+	.manageSelectStatusBox img {
+	vertical-align: bottom;
+	border-style: none;
+}
+
+.headerInputForm input {
+	-webkit-font-smoothing: antialiased;
+	direction: ltr;
+	text-align: left;
+	color: rgb(33, 33, 33);
+	letter-spacing: -0.5px;
+	outline: 0px;
+	height: 100%;
+	width: 100%;
+	padding: 0px 68px 0px 1rem;
+	border: 1px solid rgb(195, 194, 204);
+	border-radius: 2px;
+	appearance: none;
+	overflow: visible;
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0px;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	direction: ltr;
+	text-align: left;
+	color: rgb(33, 33, 33);
+	letter-spacing: -0.5px;
+	outline: 0px;
+	border: 0px;
+}
+
+.management_head {
+	height: 4rem;
+	border-bottom: 1px solid rgb(244, 244, 250);
+	display: flex;
+	-webkit-box-pack: center;
+	justify-content: center;
+}
+
+.management_nav {
+	width: 1024px;
+	display: flex;
+	height: 100%;
+	font-size: 13px;
+}
+
+.nav_management {
+	height: 100%;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	margin-right: 2rem;
+}
+
+.nav_management::after {
+	/* nav 메뉴 사이 구분자 생성 */
+	content: "";
+	width: 1px;
+	height: 14px;
+	border-right: 1px solid rgb(210, 210, 210);
+	margin-left: 2rem;
+	box-sizing: border-box;
+}
+
+.nav_management, .nav_managementForm, .nav_purchaseSalesLogForm {
+	height: 100%;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	margin-right: 2rem;
+}
+
+.nav_management:first-child {
+	margin-left: -0.5rem;
+}
+
+.nav_move1 {
+	color: rgb(33, 33, 33);
+	padding: 0.5rem;
+}
+
+.nav_move2 {
+	color: green;
+	padding: 0.5rem;
+}
+
+.nav_move3 {
+	color: rgb(33, 33, 33);
+}
+
+.bodyMain table tr>:first-child {
+	width: 10.5rem;
+}
+
+.bodyMain table thead>tr>th {
+	vertical-align: middle;
+}
+
+.bodyMain table tr>td {
+	vertical-align: middle;
+	padding: 0.5rem;
+	line-height: 1;
+}
+
+.bodyMain table tr>* {
+	flex-shrink: 0;
+}
+
+.bodyMain table tbody>tr {
+	border-bottom: 1px solid rgb(220, 219, 228);
+}
+
+.bodyMain table tr>td:first-child {
+	height: 9.5rem;
+}
+
+.bodyMain table tr>:first-child {
+	width: 10.5rem;
+}
+
+.bodyMain table tr>:nth-child(2) {
+	width: 8rem;
+}
+
+.bodyMainHeader {
+	display: flex;
+	margin: 2.5rem 0px 2rem;
+}
+
+.bodyMainHeader>* {
+	margin-right: 1rem;
+}
+
+.headerInputForm {
+	width: 400px;
+	height: 3rem;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	position: relative;
+}
+
+.headerInputForm input {
+	height: 100%;
+	width: 100%;
+	padding: 0px 68px 0px 1rem;
+	border: 1px solid rgb(195, 194, 204);
+	border-radius: 2px;
+	appearance: none;
+}
+
+.inputFormBtn {
+	-webkit-font-smoothing: antialiased;
+	direction: ltr;
+	text-align: left;
+	color: rgb(33, 33, 33);
+	letter-spacing: -0.5px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	width: 52px;
+	height: 100%;
+	background-image: url("../image/search.png");
+	appearance: button;
+	background-color: transparent;
+	cursor: pointer;
+	outline: none;
+	padding: 0px;
+	border: 0px;
+	text-transform: none;
+	overflow: visible;
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+}
+
+.logtimeUpdate {
+	-webkit-font-smoothing: antialiased;
+	direction: ltr;
+	letter-spacing: -0.5px;
+	width: 3.25rem;
+	height: 2rem;
+	padding: 0;
+	text-align: center;
+	border-radius: 2px;
+	border: 1px solid rgb(195, 194, 204);
+	color: green;
+	appearance: button;
+	background-color: transparent;
+	cursor: pointer;
+	outline: none;
+	text-transform: none;
+	overflow: visible;
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin-bottom: 0.5rem;
+}
+
+.contentUpdate {
+	width: 3.25rem;
+	height: 2rem;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	border-radius: 2px;
+	border: 1px solid rgb(195, 194, 204);
+	color: rgb(0, 114, 230);
+	margin-bottom: 0.5rem;
+}
+
+.contentDelete {
+	-webkit-font-smoothing: antialiased;
+	direction: ltr;
+	letter-spacing: -0.5px;
+	width: 3.25rem;
+	height: 2rem;
+	text-align: center;
+	border-radius: 2px;
+	border: 1px solid green;
+	background-color: green;
+	color: rgb(255, 255, 255);
+	appearance: button;
+	cursor: pointer;
+	outline: none;
+	text-transform: none;
+	overflow: visible;
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin-bottom: 0.5rem;
+	padding: 0;
+}
+
+.lastTd {
+	display: flex;
+	flex-direction: column;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	width: 3.25rem;
+	height: 9.5rem;
+}
+
+.bodyMain table tr>:nth-child(3) {
+	width: 16rem;
+}
+
+.bodyMain table tr>:nth-child(4) {
+	width: 6.5rem;
+}
+
+.bodyMain table tr>:nth-child(5) {
+	width: 4.5rem;
+}
+
+.bodyMain table tr>:nth-child(6) {
+	width: 9.5rem;
+}
+
+.bodyMain table tr>:nth-child(7) {
+	width: 4rem;
+}
+
+.bodyMain table tr>td:last-child {
+	display: flex;
+	flex-direction: column;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	height: 9.5rem;
+	margin-right: 0px;
+	margin-top : 10px;
+}
+
+#subject {
+	color: rgb(0, 114, 230);
+}
+
+.sellManagementFooter {
+	padding: 2rem 0px 3rem;
+	display: flex;
+	-webkit-box-pack: center;
+	justify-content: center;
+}
+
+.sellManagementFooter {
+	display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.footerPagingDiv {
+	display: flex;
+}
+
+#paging{
+	width: 33px;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    border-radius: 2px;
+    color: rgb(155, 153, 169);
+    cursor: pointer;
+}
+
+#currentPaging{
+	width: 33px;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    border: 1px solid #246d24;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    background: #246d24;
+    cursor: pointer;
+}
+
+.selectQtyDiv, .manageSelectStatusDiv {
+	width: 7rem;
+	margin-left: 10px;
+}
+
+.selectContainer, .manageSelectContainer {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.selectBorder, .manageSelectBorder {
+	width: 100%;
+	height: 3rem;
+	display: flex;
+	border: 1px solid rgb(195, 194, 204);
+	border-radius: 2px;
+}
+
+.selectQty, .manageSelectStatus {
+	-webkit-box-align: center;
+	align-items: center;
+	display: flex;
+	flex: 1 1 0%;
+	flex-wrap: wrap;
+	width: 100%;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.selectQtyBox, .manageSelectStatusBox {
+	width: fit-content;
+	background: #FFFFFF url("../image/dropdown.png") no-repeat scroll;
+	overflow: hidden;
+	font-size: 16px;
+	color: #666666;
+	padding: 0 8px;
+	width: 155px;
+}
+
+.selectQtyBox img, .manageSelectStatusBox img {
+	margin: 0px 10px;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.qtyDropbox, .manageStatusDropbox {
+	position: absolute;
+	top: 47.5px;
+	left: -0.5px;
+	/* width: calc(100% + 2px); */
+	width: 100%;
+	background: rgb(255, 255, 255);
+	max-height: 300px;
+	overflow-y: auto;
+	z-index: 1;
+	border-left: 1px solid rgb(238, 238, 238);
+	border-bottom: 1px solid rgb(238, 238, 238);
+	border-right: 1px solid rgb(238, 238, 238);
+	display: none;
+	overflow-y: auto;
+}
+
+.qtyDropbox a, .manageStatusDropbox a {
+	/* width: 100%; */
+	height: 28px;
+	padding: 0px 10px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+}
+
+.qtyDropbox a:hover, .statusDropbox a:hover, .manageStatusDropbox a:hover
+	{
+	color: green;
+}
+
+*, ::before, ::after {
+	box-sizing: border-box;
+}
+
+.select3 {
+	background: rgb(173 212 173 / 50%);
+}
+
+.selectStatus {
+	-webkit-box-align: center;
+	align-items: center;
+	display: flex;
+	flex: 1 1 0%;
+	flex-wrap: wrap;
+	width: 100%;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.selectStatusBox {
+	width: fit-content;
+	background: #FFFFFF url("../image/dropdown.png") no-repeat scroll;
+	overflow: hidden;
+	font-size: 16px;
+	color: #666666;
+	padding: 0 8px;
+	width: 155px;
+}
+
+.selectStatusBox img {
+	margin: 0px 10px;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.statusDropbox {
+	position: absolute;
+	top: 47.5px;
+	left: -0.5px;
+	/* width: calc(100% + 2px); */
+	width: 100%;
+	background: rgb(255, 255, 255);
+	max-height: 300px;
+	overflow-y: auto;
+	z-index: 1;
+	border-left: 1px solid rgb(238, 238, 238);
+	border-bottom: 1px solid rgb(238, 238, 238);
+	border-right: 1px solid rgb(238, 238, 238);
+	display: none;
+	overflow-y: auto;
+}
+
+.statusDropbox a {
+	/* width: 100%; */
+	height: 28px;
+	padding: 0px 10px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: rgb(33, 33, 33);
+}
+
+.manageSelectStatus {
+	-webkit-box-align: center;
+	align-items: center;
+	display: flex;
+	flex: 1 1 0%;
+	flex-wrap: wrap;
+	width: 100%;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.manageSelectStatusBox {
+	text-align: left;
+	width: fit-content;
+	background: #FFFFFF;
+	/* overflow: hidden; */
+	font-size: 16px;
+	color: #666666;
+	padding: 0 8px;
+	width: 155px;
+}
+
+.manageSelectStatusBox img {
+	margin: 0px 10px;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.manageStatusDropbox {
+	position: absolute;
+	top: 47.5px;
+	left: -0.5px;
+	/* width: calc(100% + 2px); */
+	width: 100%;
+	background: rgb(255, 255, 255);
+	max-height: 300px;
+	overflow-y: auto;
+	z-index: 1;
+	border-left: 1px solid rgb(238, 238, 238);
+	border-bottom: 1px solid rgb(238, 238, 238);
+	border-right: 1px solid rgb(238, 238, 238);
+	display: none;
+	overflow-y: auto;
+}
+
+.manageStatusDropbox a {
+	/* width: 100%; */
+	height: 40px;
+	padding: 0px 10px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	font-weight: 600;
+}

@@ -1,0 +1,233 @@
+@charset "UTF-8";
+
+body, #root {
+   max-width: 375px;
+   max-height: 667px;
+   overflow: hidden;
+   background-color: gray;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+   blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+   em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+   b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+   table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+   details, embed, figure, figcaption, footer, header, hgroup, main, menu,
+   nav, output, ruby, section, summary, time, mark, audio, video {
+   margin: 0px;
+   padding: 0px;
+   font: inherit;
+   vertical-align: baseline;
+}
+
+*, ::before, ::after {
+   box-sizing: border-box;
+}
+
+div {
+   display: block;
+}
+
+body, input, textarea, select, button {
+   -webkit-font-smoothing: antialiased;
+   direction: ltr;
+   text-align: left;
+   color: green;
+   letter-spacing: -0.5px;
+   outline: 0px;
+}
+
+body {
+   background-color: rgb(249, 249, 249);
+   font-size: 14px;
+}
+
+html, body {
+   font-family: "Noto Sans KR", sans-serif;
+   font-weight: 400;
+   color: gray;
+}
+
+body {
+   line-height: 1;
+}
+
+button {
+   appearance: auto;
+   -webkit-writing-mode: horizontal-tb !important;
+   text-rendering: auto;
+   letter-spacing: normal;
+   word-spacing: normal;
+   text-transform: none;
+   text-indent: 0px;
+   text-shadow: none;
+   display: inline-block;
+   text-align: center;
+   align-items: flex-start;
+   cursor: default;
+   background-color: white;
+   box-sizing: border-box;
+   margin: 0em;
+   border: none;
+   box-sizing: border-box;
+}
+
+a {
+   color: rgb(33, 33, 33);
+   text-decoration: none;
+   cursor: pointer;
+   background-color: transparent;
+}
+
+#root {
+   width: 375px;
+   height: 667px;
+}
+/* 헤더 */
+#talkList_header {
+   position: relative;
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   height: 50px;
+   -webkit-box-align: center;
+   align-items: center;
+   background: white;
+   z-index: 10;
+   -webkit-box-orient: horizontal;
+   padding: 0px 1rem;
+   -webkit-box-pack: center;
+   justify-content: center;
+   border-bottom: 2px solid green;
+}
+
+/* 헤더끝 ------------- */
+/* List */
+#list_div {
+   height: 100%;
+}
+
+ul {
+   display: block;
+   list-style-type: disc;
+   margin-block-start: 0px;
+   margin-block-end: 0px;
+   margin-inline-start: 0px;
+   margin-inline-end: 0px;
+   background-color: white;
+}
+
+li {
+   display: list-item;
+   text-align: -webkit-match-parent;
+}
+
+.talkRoom_div {
+   display: flex;
+   background: rgb(255, 255, 255);
+   flex-direction: row;
+   -webkit-box-orient: horizontal;
+   -webkit-box-align: center;
+   align-items: center;
+   height: 80px;
+   width: 100%;
+   padding: 0px;
+   margin: 0px;
+}
+
+#talkList {
+   display: block;
+   background: white;
+}
+
+.talkRoom {
+   display: flex;
+   background-color: white;
+   height: 100%;
+   align-items: center;
+   width: 100%;
+}
+
+.profile_img_a {
+   display: flex;
+   margin: 0px 16px;
+}
+
+.profile_img {
+   border-radius: 50%;
+}
+
+img {
+   vertical-align: bottom;
+   border-style: none;
+}
+
+.talkRoom_a {
+   width: 60%;
+}
+
+.userName {
+   padding-bottom: 10px;
+}
+
+.talkView { /* 한줄만 미리보기로 볼 수 있습니다 */
+   display: inline-block;
+   width: 100%;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.talkLogTime {
+   font-size: 8px;
+   padding-bottom: 20px;
+}
+
+.addBtn {
+   justify-content: flex-end;
+   width: 40px;
+   padding-left: 11px;
+   cursor: pointer;
+}
+
+.talkRoom {
+   flex: 1 1 0%;
+   overflow: hidden;
+}
+/* 모달 */
+.on {
+   position: fixed;
+   opacity: 0.4;
+   background: black;
+   width: 375px;
+   height: 667px;
+   top: 0px;
+}
+
+.all_modal {
+   z-index: 20;
+   display: flex;
+}
+.modal_div {
+    display: flex;
+    flex-direction: column;
+    width: 296px;
+    background: rgb(255, 255, 255);
+    z-index: 1102;
+    padding: 1.5rem 0px;
+    border-radius: 2px;
+    text-align: center;
+}
+.userName_modal {
+   padding-bottom: 20px;
+   font-weight: bold;
+   color: black;
+}
+.modal_div button {
+   padding-top: 10px;
+   padding-bottom:11px;
+   cursor: pointer;
+}
+.modal_div button:hover {
+   background-color: #f0f5fa;
+}

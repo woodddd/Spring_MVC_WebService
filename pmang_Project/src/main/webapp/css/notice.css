@@ -1,0 +1,338 @@
+#wrap {
+	background: #eeeeee;
+}
+
+
+#tabArea{
+	background: #eeeeee;
+	padding-top:20px;
+	padding-bottom:50px;
+}
+
+#tabDiv {
+
+	min-width: 1024px;
+	width: 1024px;
+	margin: 0 auto;
+	background: #ffffff;
+	text-align:center;
+	justify-content: space-between;  
+}
+
+
+/*������ư ����*/
+
+.tabs {
+	display: none;
+}
+
+/* ������ư�� ��ȭ */
+
+.tabLabel {
+
+	display: inline-block;
+	width:290px;
+	margin: 0 auto;
+	padding: 20px;
+	font-weight: 600;
+	font-size: 15px;
+	text-align: center;
+	border: 1px solid transparent;		
+}
+
+
+.tabLabel:hover {
+	color: gray;
+	cursor: pointer;
+}
+
+/*input Ŭ����, label ��Ÿ��*/
+
+.tabs:checked+label {
+	color: green;
+	border-bottom: 3px solid green;
+}
+
+/* tab�� üũ�Ǹ� tab���� content������ ��� �ڽĿ� ���� ��Ÿ��  */
+
+#tab1:checked ~ #bulletin,
+#tab2:checked ~ #policy,
+#tab3:checked ~ #FQA {
+	display: block;
+}
+
+/* ���ÿ� ���� �߰��� ���� ��Ÿ�� */
+section {
+	display: none;
+	border-top: 1px solid #ddd;
+}
+
+
+
+.bulletinDiv{
+
+
+}
+
+
+
+.bulletinArea{
+
+	border:1px solid #d2d2d2;
+	text-align:left;
+	position:relative;
+	cursor:pointer;
+}
+
+.bulletinArea:hover{
+	cursor:pointer;
+}
+
+.arrowImg{
+	position:absolute;
+	top:19px;
+	left:95%;
+}
+
+.bulletinTitle{
+
+	font-size:17px;
+	font-weight:600;
+	padding:10px;
+	padding-bottom:0;
+	margin : 0 auto;
+}
+
+.bulletinDate{
+
+	font-size:13px;
+	font-weight:600;
+	padding:10px;
+	padding-top:0;
+	margin : 0 auto;
+    color: rgb(204, 204, 204);
+}
+
+.bulletinContent{
+
+	display:none;
+	text-align:left;
+	margin:0px;
+	padding:10px;
+	white-space : pre-line;
+	background-color:#eeeeee;
+	position:relative;	
+}
+
+.contentEmp{
+	color:red;
+
+}
+
+.contentExp{
+	color:blue;
+}
+
+.prohibitedItem{
+	font-weight:600;
+	text-decoration: underline;
+}
+
+.prohibitedLink:hover{
+	cursor:pointer;
+}
+
+
+#policy{
+	font-size:15px;
+	background: rgb(255, 255, 255);
+    padding: 4rem 3.5rem;
+    color: rgb(30, 29, 41);
+}
+/* #policy div{
+	border: 1px solid gray;
+} */
+
+#a1{
+	display: flex;
+   /*  flex-direction: row;
+    width: 100%; */
+    border-bottom: 2px solid rgb(30, 29, 41);
+    margin-bottom: 36px;
+}
+#a2{
+	display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+#b1{
+	width: 280px;
+}
+#b2{
+	/* flex: 1 1 0%; */
+}
+.c1{
+	font-weight : 600;
+	white-space : pre-line;
+	text-align : left;
+    display: block;
+    margin-bottom: 12px;
+    color: rgb(30, 29, 41);
+}
+
+#c2{
+	font-size:25px;
+}
+.c3{
+	border-bottom: 1px solid rgb(234, 233, 241);
+    /* height: 70px; */
+    font-weight : 600;
+    display: flex;
+   	text-align : left;
+   	padding-top:25px;
+   	padding-bottom:25px;
+}
+#d1{
+	width: 280px;
+	font-size:25px; 
+	font-weight : 600;
+	text-align : left;
+    color: rgb(30, 29, 41);  
+}
+#d2{
+	flex: 1 1 0%;
+}
+#e1{
+    display: flex;
+    font-weight: 600;
+}
+#e2{
+	 /* display: flex; */
+	margin-top: 2.5rem;
+    border-top: 1px solid rgb(94, 92, 107);
+    border-bottom: 1px solid rgb(94, 92, 107);
+}
+#e3{
+	color: green;
+    font-size: 13px;
+    margin-top: 15px;
+    display: flex;
+    font-weight:600;
+}
+#f1{
+	border-bottom: 1px solid rgb(94, 92, 107);
+    display: flex;
+    height: 50px;
+}
+
+#f2{
+	margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+.g1{
+    width: 15.5rem;
+    padding: 12px;
+    font-weight: 600;
+}
+.g2{
+	flex: 1 1 0%;
+	padding: 12px;
+	font-weight: 600;
+}
+.g3{
+	display: flex;
+    height: 50px;
+}
+.h1{
+	padding: 12px;
+	width: 15.5rem;
+	font-weight: 600;
+}
+.h2{
+	padding: 12px;
+	flex: 1 1 0%;
+	font-weight: 600;
+}
+
+
+.menu {
+	display: none;
+}
+
+.menuLabel {
+	display: inline-block;
+	width:297px;
+	margin: 0 auto;
+	padding: 20px;
+	font-weight: 600;
+	font-size: 15px;
+	text-align: center;
+	
+}
+
+.menuLabel:hover {
+	color: gray;
+	cursor: pointer;
+}
+
+/*input Ŭ����, label ��Ÿ��*/
+.menu:checked+label {
+	color: green;
+}
+
+/* tab�� üũ�Ǹ� tab���� content������ ��� �ڽĿ� ���� ��Ÿ��  */
+#menu1:checked ~ #section1,
+#menu2:checked ~ #section2,
+#menu3:checked ~ #section3,
+#menu4:checked ~ #section4,
+#menu5:checked ~ #section5,
+#menu6:checked ~ #section6,
+#menu7:checked ~ #section7,
+#menu8:checked ~ #section8,
+#menu9:checked ~ #section9 {
+	display: block;
+}
+
+/* �������� �� �ϳ� */
+.postArea{
+	border:1px solid #d2d2d2;
+	text-align:left;
+	position:relative;
+	cursor:pointer;
+}
+
+.postTitle{
+	font-size:17px;
+	font-weight:600;
+	padding:20px;
+	margin : 0 auto;
+}
+
+.postContent{
+	display:none;
+	text-align:left;
+	margin:0px;
+	padding:10px;
+	white-space : pre-line;
+	background-color:#eeeeee;
+	position:relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

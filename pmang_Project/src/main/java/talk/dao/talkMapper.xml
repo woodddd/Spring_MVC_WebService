@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="talkSQL">
+ 	
+ 	<!-- 방 조회 -->
+ 	<select id="isRoom" parameterType="talkRoom" resultType="talkRoom">
+ 		select * from talkroom where (userId = #{userId} and partner_userId = #{partner_userId}) or (userId = #{partner_userId} and partner_userId = #{userId})    
+ 	</select>
+ 	
+ 	<!-- 방 생성 -->
+ 	<insert id="createRoom" parameterType="talkRoom">
+ 		insert into talkroom values(talkRoom_seq.nextval,#{userId},#{partner_userId},#{item_seq},0)
+ 	</insert>
+ 	
+ 	<!-- Message 생성 -->
+ 	<insert id="insertMessage" parameterType="message">
+		insert into message values(#{userId},#{sender_user_id},#{receiver_user_id},#{talkRoom_seq},#{talk_content},TO_char(systimestamp,'YYYY-MM-DD HH24:MI:SS.FF3'),null,#{receiver_user_profileImage},#{item_seq})
+ 	</insert>
+ 	
+ 	<!-- item 조회 -->
+ 	<select id="getItem" parameterType="int" resultType="item">
+		select * from item where item_seq = #{item_seq}
+    </select>
+    
+    <!-- seller조회 -->
+    <select id="getSeller" parameterType="String" resultType="seller">
+		select * from seller where userId=#{partner_userId}
+    </select>
+    
+    <!-- 리스트 전체 빼와야 할경우 사용할수도있어서 냅둠.
+    <select id="getLastMessage" resultType="message">
+    	select * from (select rownum rn,tt.* from(select*from message order by send_time desc)tt)where rn = 1
+    </select> 
+    -->
+ 	
+ 	<!-- 방 리스트 출력 -->
+	<select id="getRoomList" parameterType="String" resultType="talkRoom">
+		select * from talkroom where userId = #{userId} or partner_userId = #{userId}
+    </select>
+ 	
+ 	 <!-- lastMessage 조회 -->
+    <select id="getLastMessage" parameterType="java.util.Map" resultType="message">
+		select * 
+		from(select * from message where talkRoom_seq = #{talkRoom_seq} and userId = #{userId} order by send_time desc)
+		where ROWNUM = 1
+    </select>
+    
+    <!-- message 불러오기 -->
+    <select id="getMessage" parameterType="java.util.Map" resultType="message">
+    	select * from message where (sender_user_id = #{userId} and receiver_user_id = #{partner_userId}) or (sender_user_id = #{partner_userId} and receiver_user_id = #{userId}) order by send_time
+    </select>
+    
+    <!-- 상대방 on/off_line 확인 -->
+	<select id="getReceiver_read_time" parameterType="hashMap" resultType="String">
+		select read_time 
+		from (select * from message where sender_user_id = #{receiver_user_id} and receiver_user_id = #{sender_user_id} and userId = #{sender_user_id})
+		where ROWNUM = 1 
+		</select>
+
+	<!-- readtime -->
+	<update id="setOpen" parameterType="hashMap">
+		update message 
+		set read_time = '3000-11-12T15:20:31.000'
+		where receiver_user_id = #{userId} and talkRoom_seq = #{talkRoom_seq} 
+	</update>
+
+	<update id="setClose" parameterType="hashMap">
+		update message 
+		set read_time = TO_char(systimestamp,'YYYY-MM-DD HH24:MI:SS.FF3') 
+		where receiver_user_id = #{userId} and talkRoom_seq = #{talkRoom_seq} 
+	</update>
+
+	<!-- 나가기 -->
+	<delete id="getOut" parameterType="java.util.Map">
+		delete from message 
+		where((sender_user_id = #{userId} and receiver_user_id = #{partner_userId}) or (sender_user_id = #{partner_userId} and receiver_user_id = #{userId}))and userId= #{userId} 
+	</delete>
+	
+	<!-- 판매자 정보 조회 -->
+ 	<!-- 상점후기 -->
+ 	<select id="getGood" resultType="int">
+ 		select count(*) from review where reviewstamp = '좋아요'
+ 	</select>
+ 	
+ 	<select id="getSoso" resultType="int">
+ 		select count(*) from review where reviewstamp = '보통이에요'
+ 	</select>
+ 	
+ 	<select id="getNotGood" resultType="int">
+ 		select count(*) from review where reviewstamp = '별로에요'
+ 	</select>
+ 	
+ 	<!-- 판매상품 (판매중인상품)-->
+ 	<select id="getItemCount" parameterType="String" resultType="int">
+ 		select count(*) from item where userid = #{userId} and item_state = 'sell'
+ 	</select>
+ 	
+ 	<select id="getSalesCount" parameterType="String" resultType="int">
+ 		select count(*) from item where userid = #{userId}
+ 	</select>
+ 	<!-- 판매완료 -->
+ 	<update id="itemSold" parameterType="String">
+ 		update item
+ 		set item_state = 'sold'
+ 		where item_seq = #{item_seq }
+ 	</update>
+ 	
+ 	<!-- 현재 itemState 상태 -->
+ 	<select id="getItemState" parameterType="String" resultType="String">
+ 		select item_state from item where item_seq = #{item_seq }
+ 	</select>
+ 	
+ 	<!-- 아이템판매상태 조회 -->
+    <select id="sellCheck" parameterType="Map" resultType="String">
+		select item_state from item where item_seq = #{item_seq}
+    </select>
+    
+    <!-- item_seq 업데이트 -->
+    <update id="updateItemSeq" parameterType="talkRoom">
+    	update talkroom
+    	set item_seq = #{item_seq}
+    	where (userId = #{userId} and partner_userId = #{partner_userId}) or (userId = #{partner_userId} and partner_userId = #{userId})
+    </update>
+ </mapper>
+ 

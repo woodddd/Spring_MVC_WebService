@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.contact-clean{
+	margin-bottom: 80px;
+	margin-top: 50px;
+}
+#searchPwfield{
+	margin-left: 5%;
+	margin-right: 10%;
+	border: 1px solid #e5e5e5;
+}
+#searchPwcontent{
+	margin-left: 50px;
+	margin-bottom: 100px;
+}
+
+#search_id{
+	font-weight: 700;
+}
+#email_tr{
+	margin-top: 50px;
+}
+.btn-primary{
+	background-color:green;
+	color : white;
+	font-weight: 600;
+	width: 400px;
+	margin-left: 70px;
+}
+
